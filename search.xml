@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>uwsgi 安装问题</title>
+    <url>/2020/02/26/uwsgi-%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>使用<code>pip install uwsgi</code>安装的时候会出现各种有的没的问题，这里不再一一列举，仅放出解决方案</p>
+<p>错误提示基本上都会爆出gcc的问题</p>
+<p>这里需要将机器的gcc默认版本降为4.7</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">sudo</span> <span class="string">apt-get install gcc-4.7</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">/usr/bin</span></span><br><span class="line"><span class="attr">sudo</span> <span class="string">ln -s gcc-4.7 gcc</span></span><br><span class="line"><span class="attr">pip</span> <span class="string">install uwsgi</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>flask</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>flask部署pytorch</title>
     <url>/2020/02/22/flask%E9%83%A8%E7%BD%B2pytorch/</url>
-    <content><![CDATA[<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">curl https:<span class="regexp">//</span>flask.havon.cn<span class="regexp">/predict?url=https:/</span><span class="regexp">/media.minutouno.com/</span>adjuntos<span class="regexp">/150/im</span>agenes<span class="regexp">/028/</span><span class="number">853</span><span class="regexp">/0028853430.jpg</span></span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h3 id="用flask部署深度学习微服务"><a href="#用flask部署深度学习微服务" class="headerlink" title="用flask部署深度学习微服务"></a>用flask部署深度学习微服务</h3><p>部署期间发生了端口访问不到的问题，详情请参见nginx反向代理</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">curl https:<span class="regexp">//</span>flask.havon.cn<span class="regexp">/predict?url=https:/</span><span class="regexp">/media.minutouno.com/</span>adjuntos<span class="regexp">/150/im</span>agenes<span class="regexp">/028/</span><span class="number">853</span><span class="regexp">/0028853430.jpg</span></span><br></pre></td></tr></table></figure>
 
 
 
-<p>![image-20200223233654470](/Users/huima/Library/Application Support/typora-user-images/image-20200223233654470.png)</p>
+
+
+
+
+<h4 id="reference："><a href="#reference：" class="headerlink" title="reference："></a>reference：</h4><p><a href="https://medium.com/datadriveninvestor/deploy-your-pytorch-model-to-production-f69460192217" target="_blank" rel="noopener">https://medium.com/datadriveninvestor/deploy-your-pytorch-model-to-production-f69460192217</a></p>
 ]]></content>
   </entry>
   <entry>

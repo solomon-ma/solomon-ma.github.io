@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"solomon-ma.github.io","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","width":300,"display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1curl https:&#x2F;&#x2F;flask.havon.cn&#x2F;predict?url&#x3D;https:&#x2F;&#x2F;media.minutouno.com&#x2F;adjuntos&#x2F;150&#x2F;imagenes&#x2F;028&#x2F;853&#x2F;0028853430.jpg    ![image-20200223233654470](&#x2F;Users&#x2F;huima&#x2F;Library&#x2F;Application Support&#x2F;typora-user-ima">
+  <meta name="description" content="用flask部署深度学习微服务部署期间发生了端口访问不到的问题，详情请参见nginx反向代理 1curl https:&#x2F;&#x2F;flask.havon.cn&#x2F;predict?url&#x3D;https:&#x2F;&#x2F;media.minutouno.com&#x2F;adjuntos&#x2F;150&#x2F;imagenes&#x2F;028&#x2F;853&#x2F;0028853430.jpg        reference：https:&#x2F;&#x2F;medium.com&#x2F;dat">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flask部署pytorch">
 <meta property="og:url" content="https://solomon-ma.github.io/2020/02/22/flask%E9%83%A8%E7%BD%B2pytorch/index.html">
 <meta property="og:site_name" content="Solomon-Ma">
-<meta property="og:description" content="1curl https:&#x2F;&#x2F;flask.havon.cn&#x2F;predict?url&#x3D;https:&#x2F;&#x2F;media.minutouno.com&#x2F;adjuntos&#x2F;150&#x2F;imagenes&#x2F;028&#x2F;853&#x2F;0028853430.jpg    ![image-20200223233654470](&#x2F;Users&#x2F;huima&#x2F;Library&#x2F;Application Support&#x2F;typora-user-ima">
+<meta property="og:description" content="用flask部署深度学习微服务部署期间发生了端口访问不到的问题，详情请参见nginx反向代理 1curl https:&#x2F;&#x2F;flask.havon.cn&#x2F;predict?url&#x3D;https:&#x2F;&#x2F;media.minutouno.com&#x2F;adjuntos&#x2F;150&#x2F;imagenes&#x2F;028&#x2F;853&#x2F;0028853430.jpg        reference：https:&#x2F;&#x2F;medium.com&#x2F;dat">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-02-22T10:25:17.753Z">
-<meta property="article:modified_time" content="2020-02-23T15:36:59.589Z">
+<meta property="article:modified_time" content="2020-02-26T05:36:07.136Z">
 <meta property="article:author" content="solomon-ma">
 <meta name="twitter:card" content="summary">
 
@@ -219,7 +219,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-02-23 23:36:59" itemprop="dateModified" datetime="2020-02-23T23:36:59+08:00">2020-02-23</time>
+                <time title="修改时间：2020-02-26 13:36:07" itemprop="dateModified" datetime="2020-02-26T13:36:07+08:00">2020-02-26</time>
               </span>
 
           
@@ -233,11 +233,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https:<span class="regexp">//</span>flask.havon.cn<span class="regexp">/predict?url=https:/</span><span class="regexp">/media.minutouno.com/</span>adjuntos<span class="regexp">/150/im</span>agenes<span class="regexp">/028/</span><span class="number">853</span><span class="regexp">/0028853430.jpg</span></span><br></pre></td></tr></table></figure>
+        <h3 id="用flask部署深度学习微服务"><a href="#用flask部署深度学习微服务" class="headerlink" title="用flask部署深度学习微服务"></a>用flask部署深度学习微服务</h3><p>部署期间发生了端口访问不到的问题，详情请参见nginx反向代理</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl https:<span class="regexp">//</span>flask.havon.cn<span class="regexp">/predict?url=https:/</span><span class="regexp">/media.minutouno.com/</span>adjuntos<span class="regexp">/150/im</span>agenes<span class="regexp">/028/</span><span class="number">853</span><span class="regexp">/0028853430.jpg</span></span><br></pre></td></tr></table></figure>
 
 
 
-<p>![image-20200223233654470](/Users/huima/Library/Application Support/typora-user-images/image-20200223233654470.png)</p>
+
+
+
+
+<h4 id="reference："><a href="#reference：" class="headerlink" title="reference："></a>reference：</h4><p><a href="https://medium.com/datadriveninvestor/deploy-your-pytorch-model-to-production-f69460192217" target="_blank" rel="noopener">https://medium.com/datadriveninvestor/deploy-your-pytorch-model-to-production-f69460192217</a></p>
 
     </div>
 
@@ -272,7 +277,10 @@
     <a href="/2020/02/14/kubernetes/" rel="prev" title="kubernetes">
       <i class="fa fa-chevron-left"></i> kubernetes
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/02/26/uwsgi-%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" rel="next" title="uwsgi 安装问题">
+      uwsgi 安装问题 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -332,6 +340,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#用flask部署深度学习微服务"><span class="nav-number">1.</span> <span class="nav-text">用flask部署深度学习微服务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#reference："><span class="nav-number">1.1.</span> <span class="nav-text">reference：</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -347,14 +356,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -379,7 +388,7 @@
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubernetes/" rel="tag">kubernetes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/work-havon/" rel="tag">work_havon</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%B7%E6%80%9D/" rel="tag">海思</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/" rel="tag">flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubernetes/" rel="tag">kubernetes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/work-havon/" rel="tag">work_havon</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%B7%E6%80%9D/" rel="tag">海思</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a><span class="tag-list-count">1</span></li></ul>
         </canvas>
     </div>
 </div>
