@@ -20,20 +20,22 @@
     var CONFIG = {"hostname":"solomon-ma.github.io","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","width":300,"display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="pip安装uwsgi报错问题">
+  <meta name="description" content="理解Nginx WSGI Flask之间的关系">
 <meta property="og:type" content="article">
-<meta property="og:title" content="uwsgi 安装问题">
-<meta property="og:url" content="https://solomon-ma.github.io/2020/02/26/uwsgi-%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:title" content="Nginx WSGI Flask">
+<meta property="og:url" content="https://solomon-ma.github.io/2020/02/27/Nginx-WSGI-Flask/index.html">
 <meta property="og:site_name" content="Solomon-Ma">
-<meta property="og:description" content="pip安装uwsgi报错问题">
+<meta property="og:description" content="理解Nginx WSGI Flask之间的关系">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-02-26T15:43:00.000Z">
-<meta property="article:modified_time" content="2020-02-26T15:48:38.889Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcb9vz74wrj30ek0wo0wr.jpg">
+<meta property="article:published_time" content="2020-02-27T13:07:49.000Z">
+<meta property="article:modified_time" content="2020-02-27T13:55:30.191Z">
 <meta property="article:author" content="solomon-ma">
-<meta property="article:tag" content="flask">
+<meta property="article:tag" content="Flask">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/00831rSTly1gcb9vz74wrj30ek0wo0wr.jpg">
 
-<link rel="canonical" href="https://solomon-ma.github.io/2020/02/26/uwsgi-%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/">
+<link rel="canonical" href="https://solomon-ma.github.io/2020/02/27/Nginx-WSGI-Flask/">
 
 
 <script id="page-configurations">
@@ -45,7 +47,7 @@
   };
 </script>
 
-  <title>uwsgi 安装问题 | Solomon-Ma</title>
+  <title>Nginx WSGI Flask | Solomon-Ma</title>
   
 
 
@@ -190,7 +192,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://solomon-ma.github.io/2020/02/26/uwsgi-%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="https://solomon-ma.github.io/2020/02/27/Nginx-WSGI-Flask/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/huima.jpg">
@@ -203,7 +205,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          uwsgi 安装问题
+          Nginx WSGI Flask
         </h1>
 
         <div class="post-meta">
@@ -214,11 +216,11 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-02-26 23:43:00 / 修改时间：23:48:38" itemprop="dateCreated datePublished" datetime="2020-02-26T23:43:00+08:00">2020-02-26</time>
+              <time title="创建时间：2020-02-27 21:07:49 / 修改时间：21:55:30" itemprop="dateCreated datePublished" datetime="2020-02-27T21:07:49+08:00">2020-02-27</time>
             </span>
 
           
-            <div class="post-description">pip安装uwsgi报错问题</div>
+            <div class="post-description">理解Nginx WSGI Flask之间的关系</div>
 
         </div>
       </header>
@@ -229,11 +231,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>使用<code>pip install uwsgi</code>安装的时候会出现各种有的没的问题，这里不再一一列举，仅放出解决方案</p>
-<p>错误提示基本上都会爆出gcc的问题</p>
-<p>这里需要将机器的gcc默认版本降为4.7</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sudo</span> <span class="string">apt-get install gcc-4.7</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">/usr/bin</span></span><br><span class="line"><span class="attr">sudo</span> <span class="string">ln -s gcc-4.7 gcc</span></span><br><span class="line"><span class="attr">pip</span> <span class="string">install uwsgi</span></span><br></pre></td></tr></table></figure>
+        <img src="https://tva1.sinaimg.cn/large/00831rSTly1gcb9vz74wrj30ek0wo0wr.jpg" alt="image-20200227211857243" style="zoom:50%;" />
 
+<p>Web服务器层： Nginx</p>
+<p>Web框架层： Flask</p>
+<p>WSGI层： uwsgi</p>
+<h3 id="Web-服务器层"><a href="#Web-服务器层" class="headerlink" title="Web 服务器层"></a>Web 服务器层</h3><p>传统的客户端-服务器架构，服务器作用是：</p>
+<ul>
+<li>接收请求</li>
+<li>处理请求</li>
+<li>返回响应</li>
+</ul>
+<p>常见的web服务器有Nginx， Apache， IIS等。</p>
+<h3 id="Web框架层"><a href="#Web框架层" class="headerlink" title="Web框架层"></a>Web框架层</h3><p>Web框架层的作用主要是为了方便我们开发Web应用程序，HTTP请求的动态数据就是Web框架层来提供的。常见的Web框架有Flask， Django等。下面是一个Flask框架的例子。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/hello')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Hello World!'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(host=<span class="string">'0.0.0.0'</span>, port=<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+
+<p>大致说明一下上述代码的含义。</p>
+<ul>
+<li>创建了一个Web应用程序，名称app</li>
+<li>app使得所有机器均可访问该机器的8080端口</li>
+<li>HTTP协议使用URL来定位资源，路径/hello，类似于我们通过浏览器要访问<a href="http://www.xxx.com/hello" target="_blank" rel="noopener">www.xxx.com/hello</a></li>
+<li>hello界面返回字符串Hello World！</li>
+</ul>
+<h3 id="WSGI层"><a href="#WSGI层" class="headerlink" title="WSGI层"></a>WSGI层</h3><p>WSGI(Web Server Gateway Interface)</p>
+<p>WSGI只是一种接口，仅适用于python语言，它定义了Web服务器和Web应用之间的接口规范。也就是说只要Web服务器和Web应用都遵守了WSGI协议，那么Web服务器和Web应用就可以随意组合。</p>
+<p>举个例子，WSGI就像是我们打电话时中间的媒介。拨通电话之后，我们只需要说话，不用担心中间语音是如何处理如何传输的，也不需要担心移动的号码如何往联通的转换，国内的号码如何和国外的号码通过之类的问题。这里的WSGI就是帮助处理和传输工作的。</p>
+<h4 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h4><p><a href="https://blog.csdn.net/lihao21/article/details/52304119" target="_blank" rel="noopener">https://blog.csdn.net/lihao21/article/details/52304119</a></p>
 
     </div>
 
@@ -254,7 +277,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/flask/" rel="tag"># flask</a>
+              <a href="/tags/Flask/" rel="tag"># Flask</a>
           </div>
 
         
@@ -268,13 +291,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/02/22/flask%E9%83%A8%E7%BD%B2pytorch/" rel="prev" title="flask部署pytorch">
-      <i class="fa fa-chevron-left"></i> flask部署pytorch
+    <a href="/2020/02/26/uwsgi-%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" rel="prev" title="uwsgi 安装问题">
+      <i class="fa fa-chevron-left"></i> uwsgi 安装问题
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/02/27/Nginx-WSGI-Flask/" rel="next" title="Nginx WSGI Flask">
-      Nginx WSGI Flask <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -334,6 +354,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Web-服务器层"><span class="nav-number">1.</span> <span class="nav-text">Web 服务器层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web框架层"><span class="nav-number">2.</span> <span class="nav-text">Web框架层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#WSGI层"><span class="nav-number">3.</span> <span class="nav-text">WSGI层</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Reference："><span class="nav-number">3.1.</span> <span class="nav-text">Reference：</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

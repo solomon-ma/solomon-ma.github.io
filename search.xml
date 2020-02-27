@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Nginx WSGI Flask</title>
+    <url>/2020/02/27/Nginx-WSGI-Flask/</url>
+    <content><![CDATA[<img src="https://tva1.sinaimg.cn/large/00831rSTly1gcb9vz74wrj30ek0wo0wr.jpg" alt="image-20200227211857243" style="zoom:50%;" />
+
+<p>Web服务器层： Nginx</p>
+<p>Web框架层： Flask</p>
+<p>WSGI层： uwsgi</p>
+<h3 id="Web-服务器层"><a href="#Web-服务器层" class="headerlink" title="Web 服务器层"></a>Web 服务器层</h3><p>传统的客户端-服务器架构，服务器作用是：</p>
+<ul>
+<li>接收请求</li>
+<li>处理请求</li>
+<li>返回响应</li>
+</ul>
+<p>常见的web服务器有Nginx， Apache， IIS等。</p>
+<h3 id="Web框架层"><a href="#Web框架层" class="headerlink" title="Web框架层"></a>Web框架层</h3><p>Web框架层的作用主要是为了方便我们开发Web应用程序，HTTP请求的动态数据就是Web框架层来提供的。常见的Web框架有Flask， Django等。下面是一个Flask框架的例子。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route('/hello')</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello_world</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Hello World!'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    app.run(host=<span class="string">'0.0.0.0'</span>, port=<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+
+<p>大致说明一下上述代码的含义。</p>
+<ul>
+<li>创建了一个Web应用程序，名称app</li>
+<li>app使得所有机器均可访问该机器的8080端口</li>
+<li>HTTP协议使用URL来定位资源，路径/hello，类似于我们通过浏览器要访问<a href="http://www.xxx.com/hello" target="_blank" rel="noopener">www.xxx.com/hello</a></li>
+<li>hello界面返回字符串Hello World！</li>
+</ul>
+<h3 id="WSGI层"><a href="#WSGI层" class="headerlink" title="WSGI层"></a>WSGI层</h3><p>WSGI(Web Server Gateway Interface)</p>
+<p>WSGI只是一种接口，仅适用于python语言，它定义了Web服务器和Web应用之间的接口规范。也就是说只要Web服务器和Web应用都遵守了WSGI协议，那么Web服务器和Web应用就可以随意组合。</p>
+<p>举个例子，WSGI就像是我们打电话时中间的媒介。拨通电话之后，我们只需要说话，不用担心中间语音是如何处理如何传输的，也不需要担心移动的号码如何往联通的转换，国内的号码如何和国外的号码通过之类的问题。这里的WSGI就是帮助处理和传输工作的。</p>
+<h4 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h4><p><a href="https://blog.csdn.net/lihao21/article/details/52304119" target="_blank" rel="noopener">https://blog.csdn.net/lihao21/article/details/52304119</a></p>
+]]></content>
+      <tags>
+        <tag>Flask</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>uwsgi 安装问题</title>
     <url>/2020/02/26/uwsgi-%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/</url>
     <content><![CDATA[<p>使用<code>pip install uwsgi</code>安装的时候会出现各种有的没的问题，这里不再一一列举，仅放出解决方案</p>
