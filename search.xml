@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>nginx</title>
+    <url>/2020/02/27/nginx/</url>
+    <content><![CDATA[<p>don’t BB , show me code!</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="built_in">..</span>.              #全局块</span><br><span class="line"></span><br><span class="line">events &#123;         #events块</span><br><span class="line">   <span class="built_in">..</span>.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">http      #http块</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">..</span>.   #http全局块</span><br><span class="line">   <span class="built_in"> server </span>       #server块</span><br><span class="line">    &#123; </span><br><span class="line">        <span class="built_in">..</span>.       #server全局块</span><br><span class="line">        location [PATTERN]   #location块</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">..</span>.</span><br><span class="line">        &#125;</span><br><span class="line">        location [PATTERN] </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">..</span>.</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    server</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">..</span>.</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">..</span>.     #http全局块</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>全局块<ul>
+<li>运行nginx服务器的用户组</li>
+<li>nginx进程pid存放路径</li>
+<li>日志保存路径</li>
+<li>配置文件引入</li>
+<li>允许生成worker process数等</li>
+</ul>
+</li>
+<li>events块：配置影响nginx服务器或与用户的网络连接<ul>
+<li>每个进程最大连接数</li>
+<li>选取哪种事件驱动模型处理连接请求</li>
+<li>是否允许同时接受多个网络连接</li>
+<li>开启多个网络连接序列化等</li>
+</ul>
+</li>
+<li>http块：可以嵌套多个server，配置代理，缓存，日志等绝大多数功能和第三方模块的配置<ul>
+<li>文件引入</li>
+<li>mime-type定义</li>
+<li>日志自定义</li>
+<li>是否使用sendfile传输文件</li>
+<li>连接超时时间</li>
+<li>单连接请求数等</li>
+</ul>
+</li>
+<li>server块：配置虚拟主机的相关参数，一个http中可以有多个server</li>
+<li>location块：配置请求的路由，以及各种页面的处理情况</li>
+</ul>
+<h4 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h4><p><a href="https://www.runoob.com/w3cnote/nginx-install-and-config.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/nginx-install-and-config.html</a></p>
+]]></content>
+      <tags>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Nginx WSGI Flask</title>
     <url>/2020/02/27/Nginx-WSGI-Flask/</url>
     <content><![CDATA[<img src="https://tva1.sinaimg.cn/large/00831rSTly1gcb9vz74wrj30ek0wo0wr.jpg" alt="image-20200227211857243" style="zoom:50%;" />
