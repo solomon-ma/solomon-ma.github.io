@@ -20,17 +20,24 @@
     var CONFIG = {"hostname":"solomon-ma.github.io","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","width":300,"display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="马慧">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Solomon-Ma">
-<meta property="og:url" content="https://solomon-ma.github.io/tags/work-havon/index.html">
+  <meta name="description" content="mobilenet_v1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mobilenet_v1">
+<meta property="og:url" content="https://solomon-ma.github.io/2020/02/29/mobilenet-v1/index.html">
 <meta property="og:site_name" content="Solomon-Ma">
-<meta property="og:description" content="马慧">
+<meta property="og:description" content="mobilenet_v1">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTgy1gcdf6b85amj30j20qmq5l.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/00831rSTgy1gcdf6hwbygj30zc0pin3g.jpg">
+<meta property="article:published_time" content="2020-02-29T06:03:29.000Z">
+<meta property="article:modified_time" content="2020-02-29T10:26:48.513Z">
 <meta property="article:author" content="solomon-ma">
+<meta property="article:tag" content="移动端网络">
+<meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/00831rSTgy1gcdf6b85amj30j20qmq5l.jpg">
 
-<link rel="canonical" href="https://solomon-ma.github.io/tags/work-havon/">
+<link rel="canonical" href="https://solomon-ma.github.io/2020/02/29/mobilenet-v1/">
 
 
 <script id="page-configurations">
@@ -38,11 +45,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>标签: work_havon | Solomon-Ma</title>
+  <title>mobilenet_v1 | Solomon-Ma</title>
   
 
 
@@ -182,50 +189,148 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">work_havon
-          <small>标签</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://solomon-ma.github.io/2020/02/29/mobilenet-v1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/huima.jpg">
+      <meta itemprop="name" content="solomon-ma">
+      <meta itemprop="description" content="马慧">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Solomon-Ma">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mobilenet_v1
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-02-29 14:03:29 / 修改时间：18:26:48" itemprop="dateCreated datePublished" datetime="2020-02-29T14:03:29+08:00">2020-02-29</time>
+            </span>
+
+          
+            <div class="post-description">mobilenet_v1</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
+        <h4 id="DW（depthwidse-separable-convolution"><a href="#DW（depthwidse-separable-convolution" class="headerlink" title="DW（depthwidse separable convolution)"></a>DW（depthwidse separable convolution)</h4><p>白给的性能提升，干嘛不要</p>
+<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcdf6b85amj30j20qmq5l.jpg" alt="image-20200229143704058" style="zoom:50%;" />
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Channel</th>
+<th>kernel_size</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Input</td>
+<td>M</td>
+<td>$ D_K $</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>N</td>
+<td>$D_F $</td>
+</tr>
+</tbody></table>
+<p>标准卷积计算量：$D_K * D_K * M * N * D_F * D_F$</p>
+<p>DW计算量：$D_k * D_k * M * D_F * D_F + M * N * D_F * D_F$</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv_dw</span><span class="params">(inp, oup, stride)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> nn.Sequential(</span><br><span class="line">                nn.Conv2d(inp, inp, <span class="number">3</span>, stride, <span class="number">1</span>, groups=inp, bias=<span class="literal">False</span>),</span><br><span class="line">                nn.BatchNorm2d(inp),</span><br><span class="line">                nn.ReLU(inplace=<span class="literal">True</span>),</span><br><span class="line">    </span><br><span class="line">                nn.Conv2d(inp, oup, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, bias=<span class="literal">False</span>),</span><br><span class="line">                nn.BatchNorm2d(oup),</span><br><span class="line">                nn.ReLU(inplace=<span class="literal">True</span>),</span><br><span class="line">            )</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CLASS torch.nn.Conv2d(in_channels, out_channels, kernel_size, <span class="attribute">stride</span>=1, <span class="attribute">padding</span>=0, <span class="attribute">dilation</span>=1, <span class="attribute">groups</span>=1, <span class="attribute">bias</span>=<span class="literal">True</span>, <span class="attribute">padding_mode</span>=<span class="string">'zeros'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>groups</code> controls the connections between inputs and outputs. <code>in_channels</code> and <code>out_channels</code> must both be divisible by <code>groups</code>. For example,</p>
+<blockquote>
+<ul>
+<li>At groups=1, all inputs are convolved to all outputs.</li>
+<li>At groups=2, the operation becomes equivalent to having two conv layers side by side, each seeing half the input channels, and producing half the output channels, and both subsequently concatenated.</li>
+<li>At groups= <code>in_channels</code>, each input channel is convolved with its own set of filters, of size: $\left\lfloor\frac{out_channels}{in_channels}\right\rfloor = K$</li>
+</ul>
+</blockquote>
+<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcdf6hwbygj30zc0pin3g.jpg" alt="image-20200229174950253" style="zoom:50%;" />
+
+
+
+
+
+
+
+
+
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><p><a href="https://github.com/marvis/pytorch-mobilenet/blob/master/main.py" target="_blank" rel="noopener">https://github.com/marvis/pytorch-mobilenet/blob/master/main.py</a></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-01-03T22:59:15+08:00"
-              content="2020-01-03">
-          01-03
-        </time>
-      </div>
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/01/03/2019-12/" itemprop="url">
-            <span itemprop="name">2019-12</span>
-          </a>
-      </h2>
+  
+</div>
 
-    </header>
-  </article>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%BD%91%E7%BB%9C/" rel="tag"># 移动端网络</a>
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+          </div>
 
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
     </div>
   </div>
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/02/29/mobilenet-v3/" rel="prev" title="mobilenet_v3">
+      <i class="fa fa-chevron-left"></i> mobilenet_v3
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/06/MNN%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99/" rel="next" title="MNN编译安装报错">
+      MNN编译安装报错 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
   
   
   
 
-  
-
+  </div>
 
 
           </div>
@@ -276,6 +381,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#DW（depthwidse-separable-convolution"><span class="nav-number">1.</span> <span class="nav-text">DW（depthwidse separable convolution)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reference"><span class="nav-number">2.</span> <span class="nav-text">Reference:</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -291,14 +397,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -323,7 +429,7 @@
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/" rel="tag">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/" rel="tag">flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubernetes/" rel="tag">kubernetes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/work-havon/" rel="tag">work_havon</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%B7%E6%80%9D/" rel="tag">海思</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/" rel="tag">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MNN/" rel="tag">MNN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/" rel="tag">flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubernetes/" rel="tag">kubernetes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tmux/" rel="tag">tmux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%B7%E6%80%9D/" rel="tag">海思</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%BD%91%E7%BB%9C/" rel="tag">移动端网络</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a><span class="tag-list-count">1</span></li></ul>
         </canvas>
     </div>
 </div>

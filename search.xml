@@ -1,6 +1,296 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>HI3559V200 基础知识补充(内联函数)</title>
+    <url>/2020/04/17/HI3559V200-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0/</url>
+    <content><![CDATA[<h1 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>在C语言中，如果一些函数被频繁调用，不断地有函数入栈，即<strong>函数栈</strong>，会造成栈空间或<strong>栈内存</strong>的大量消耗。</p>
+<p>为了解决这个问题，特别的引入了<strong>inline修饰符</strong>，表示为<strong>内联函数</strong>。</p>
+<h2 id="Sample-code"><a href="#Sample-code" class="headerlink" title="Sample code"></a>Sample code</h2><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;  </span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//函数定义为inline即:内联函数  </span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">char</span>* <span class="title">dbtest</span><span class="params">(<span class="keyword">int</span> a)</span> </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">	<span class="keyword">return</span> (i % <span class="number">2</span> &gt; <span class="number">0</span>) ? <span class="string">"奇"</span> : <span class="string">"偶"</span>;  </span><br><span class="line">&#125;   </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;  </span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">1</span>; i &lt; <span class="number">100</span>; i++) </span><br><span class="line">	&#123;  </span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"i:%d    奇偶性:%s /n"</span>, i, dbtest(i));      </span><br><span class="line">	&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的例子就是标准的内联函数的用法，使用inline修饰带来的好处我们表面看不出来，其实在内部的工作就是在每个for循环的内部任何调用dbtest(i)的地方都换成了<code>(i%2&gt;0)?&quot;奇&quot;:&quot;偶&quot;</code>这样就避免了频繁调用函数对栈内存重复开辟所带来的消耗。</p>
+<h2 id="权衡是否需要内联函数"><a href="#权衡是否需要内联函数" class="headerlink" title="权衡是否需要内联函数"></a>权衡是否需要内联函数</h2><p>但是这其中要有个权衡，如果内联函数较为庞大的话，每次的调用都需要将内联函数中的代码完全copy一份到调用位置，我们将此开销定义为$Cost_1$</p>
+<p>而我们将函数调用的使用函数栈的开销定义为$Cost_2$</p>
+<p>只有当$Cost_1 &lt; Cost_2$时，使用内联函数才有意义。</p>
+<h2 id="内联函数的编程风格"><a href="#内联函数的编程风格" class="headerlink" title="内联函数的编程风格"></a>内联函数的编程风格</h2><p>如下风格的函数Foo 不能成为内联函数：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Foo</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>; <span class="comment">// inline 仅与函数声明放在一起</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Foo</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>而如下风格的函数Foo 则成为内联函数：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Foo</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Foo</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> <span class="comment">// inline 与函数定义体放在一起</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>inline</code>是 <strong>用于实现的关键字</strong></p>
+]]></content>
+      <tags>
+        <tag>海思</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Conditional GAN</title>
+    <url>/2020/03/30/Conditional%20GAN/</url>
+    <content><![CDATA[<h1 id="Conditional-GAN"><a href="#Conditional-GAN" class="headerlink" title="Conditional GAN"></a>Conditional GAN</h1><p>输入文字，产生对应图片</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gco1ift1utj311c0sakbh.jpg" alt="image-20200309222213089"></p>
+<p>问题引出：由于文字的描述对应的图片会有各种不同的形态，因此模式的输出较为复杂</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>自然语言处理</title>
+    <url>/2020/03/22/%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/</url>
+    <content><![CDATA[<h1 id="自然语言处理"><a href="#自然语言处理" class="headerlink" title="自然语言处理"></a>自然语言处理</h1><h2 id="word2vec"><a href="#word2vec" class="headerlink" title="word2vec"></a>word2vec</h2><ul>
+<li>词向量是用来表示词的向量。把词映射为实数域向量的技术叫做word embedding</li>
+<li>word2vec包含跳字模型和连续词袋模型。</li>
+</ul>
+<h3 id="1-为什么不采用one-hot"><a href="#1-为什么不采用one-hot" class="headerlink" title="1. 为什么不采用one-hot"></a>1. 为什么不采用one-hot</h3><p>矩阵过于稀疏</p>
+<p>假设这个词在词典中索引为$i$，当它为中心词时向量表示为$v_i $，而为背景词时向量表示为。设中心词$w_c$在词典中索引为c，背景词在词典中索引为，给定中心词生成背景词的条件概率可以通过对向量内积做softmax运算而得到</p>
+<h3 id="2-跳字模型"><a href="#2-跳字模型" class="headerlink" title="2. 跳字模型"></a>2. 跳字模型</h3><p>跳字模型假设<strong>基于</strong>某个<strong>中心词</strong>来<strong>生成</strong>它在文本序列周围<strong>背景词</strong></p>
+<p>$P(“the”,”man”,”his”,”son”| “loves”)$</p>
+<h3 id="3-连续词袋模型"><a href="#3-连续词袋模型" class="headerlink" title="3. 连续词袋模型"></a>3. 连续词袋模型</h3><p>连续词袋模型假设<strong>基于</strong>某中心词在文本序列前后的<strong>背景词</strong>来<strong>生成</strong>该<strong>中心词</strong></p>
+<p>$P(“loves” | “the”,”man”,”his”,”son”)$</p>
+<h2 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h2><p><a href="https://www.zybuluo.com/Dounm/note/591752" target="_blank" rel="noopener">https://www.zybuluo.com/Dounm/note/591752</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>GAN</title>
+    <url>/2020/03/08/GAN/</url>
+    <content><![CDATA[<h1 id="GAN"><a href="#GAN" class="headerlink" title="GAN"></a>GAN</h1><h2 id="GAN-as-Structured-Learning"><a href="#GAN-as-Structured-Learning" class="headerlink" title="GAN as Structured Learning"></a>GAN as Structured Learning</h2><h3 id="Structured-Learning"><a href="#Structured-Learning" class="headerlink" title="Structured Learning"></a>Structured Learning</h3><p>Machine learning is to find a function f</p>
+<p>$f : X -&gt; Y$</p>
+<ul>
+<li>Regression : output a scalar</li>
+<li>Classification : output a “class” (one-hot vector)</li>
+<li>Structured learning/prediction: output a sequence, a matrix, a graph, a tree …</li>
+</ul>
+<h3 id="Why-structured-Learning-Challenging"><a href="#Why-structured-Learning-Challenging" class="headerlink" title="Why structured Learning Challenging?"></a>Why structured Learning Challenging?</h3><ul>
+<li>One-shot/zero-shot learning<ul>
+<li>in classification, each class has some examples.</li>
+<li>in structured learning,<ul>
+<li>if you consider each possible output as a “class”…</li>
+<li>Since the output space is huge, most “classes” do not have any training data.</li>
+<li>Machine has to create new stuff during testing</li>
+<li>need more intelligence</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Machine has to learn to do planning<ul>
+<li>machine generated objects component-by-component, but is should have a big picture in its mind.</li>
+<li>Because the output components have dependency, they should be considered globally.</li>
+</ul>
+</li>
+<li>Image Generation</li>
+<li>Sentence Generation</li>
+</ul>
+<h3 id="Structured-Learning-Approach"><a href="#Structured-Learning-Approach" class="headerlink" title="Structured Learning Approach"></a>Structured Learning Approach</h3><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gclnw7p9wzj30z00na7g9.jpg" alt="image-20200307205951259"></p>
+<h2 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h2><p>generator是否可以自己生成图片</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gclnzdsu4yj310k0sgnb2.jpg" alt="image-20200307210300360"></p>
+<p>由图片生成code得这一步需要用神经网络来train，但是只是生成了code无法得到最优解。因此用encoder-decoder网络</p>
+<h3 id="Auto-encoder"><a href="#Auto-encoder" class="headerlink" title="Auto-encoder"></a>Auto-encoder</h3><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gclopqgpifj30ys0oyqe7.jpg" alt="image-20200307212819980"></p>
+<p><img src="/Users/huima/hexo/themes/next/source/images/image-20200308201232744.png" alt="image-20200308201232744"></p>
+<p>a和b的平均产生的不一定是1</p>
+<p>因此我们需要使用Variational auto-encoder（VAE）</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcms80kk0tj312y0t27l3.jpg" alt="image-20200308201411620"></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcmse85wvyj310e0soe02.jpg" alt="image-20200308202111950"></p>
+<p>虽然下列的有6个pixel的error，但是其更像是手写的数字</p>
+<h2 id="Dicriminator"><a href="#Dicriminator" class="headerlink" title="Dicriminator"></a>Dicriminator</h2><p>是否可以用discriminator来生成objects？</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcmsmw71xxj310u0p4wtv.jpg" alt="image-20200308202933151"></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gco0395ndaj30wk0m6dr2.jpg" alt="image-20200309213257730"></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gco07ehz0dj30ui0ooal5.jpg" alt="image-20200309213701168"></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gco08cz39pj312c0pmwv9.jpg" alt="image-20200309213755380"></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gco09ho1f4j312u0pq7lc.jpg" alt="image-20200309213900856"></p>
+<p>问题是我们只有positive example，而如何生成比较好的negative example就很重要。</p>
+<p>好想变成了鸡生蛋蛋生鸡的问题！</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gco0bhmzthj30xm0okndy.jpg" alt="image-20200309214054545"></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gco0gtmzahj311i0te7oo.jpg" alt="image-20200309214602274"></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gco0iaf3unj311w0rak7r.jpg" alt="image-20200309214727392"></p>
+<h3 id="Generator-VS-Discriminator"><a href="#Generator-VS-Discriminator" class="headerlink" title="Generator VS Discriminator"></a>Generator VS Discriminator</h3><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gco0k5ryd3j30xm0m47cf.jpg" alt="image-20200309214916270"></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gco0lnwc7uj30y20pwh2i.jpg" alt="image-20200309215042908"></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gco0nh9o4tj30w60pswng.jpg" alt="image-20200309215226760"></p>
+<h3 id="GAN-VS-VAE"><a href="#GAN-VS-VAE" class="headerlink" title="GAN VS VAE"></a>GAN VS VAE</h3><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gco0ptoc0bj311i0r8dyt.jpg" alt="image-20200309215441966"></p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gco0q78nfyj312o0maqd9.jpg" alt="image-20200309215504313"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>MNN编译安装报错</title>
+    <url>/2020/03/06/MNN%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<p>在按照官方的安装步骤之前</p>
+<p>先进入MNN_ROOT/schema目录下<code>./generate.h</code></p>
+<p>cmake的所有预编译指令都在MNN_ROOT/CMakeLists.txt下</p>
+<p>可以直接编辑此文件将所需要的模块置为ON</p>
+<p>然后再安装官方指导：</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">mkdir</span> <span class="string">build</span></span><br><span class="line"><span class="attr">cd</span> <span class="string">build</span></span><br><span class="line"><span class="attr">cmake</span> <span class="string">..</span></span><br><span class="line"><span class="attr">make</span> <span class="string">-j 8</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>MNN</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mobilenet_v1</title>
+    <url>/2020/02/29/mobilenet-v1/</url>
+    <content><![CDATA[<h4 id="DW（depthwidse-separable-convolution"><a href="#DW（depthwidse-separable-convolution" class="headerlink" title="DW（depthwidse separable convolution)"></a>DW（depthwidse separable convolution)</h4><p>白给的性能提升，干嘛不要</p>
+<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcdf6b85amj30j20qmq5l.jpg" alt="image-20200229143704058" style="zoom:50%;" />
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Channel</th>
+<th>kernel_size</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Input</td>
+<td>M</td>
+<td>$ D_K $</td>
+</tr>
+<tr>
+<td>Output</td>
+<td>N</td>
+<td>$D_F $</td>
+</tr>
+</tbody></table>
+<p>标准卷积计算量：$D_K * D_K * M * N * D_F * D_F$</p>
+<p>DW计算量：$D_k * D_k * M * D_F * D_F + M * N * D_F * D_F$</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv_dw</span><span class="params">(inp, oup, stride)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> nn.Sequential(</span><br><span class="line">                nn.Conv2d(inp, inp, <span class="number">3</span>, stride, <span class="number">1</span>, groups=inp, bias=<span class="literal">False</span>),</span><br><span class="line">                nn.BatchNorm2d(inp),</span><br><span class="line">                nn.ReLU(inplace=<span class="literal">True</span>),</span><br><span class="line">    </span><br><span class="line">                nn.Conv2d(inp, oup, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, bias=<span class="literal">False</span>),</span><br><span class="line">                nn.BatchNorm2d(oup),</span><br><span class="line">                nn.ReLU(inplace=<span class="literal">True</span>),</span><br><span class="line">            )</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">CLASS torch.nn.Conv2d(in_channels, out_channels, kernel_size, <span class="attribute">stride</span>=1, <span class="attribute">padding</span>=0, <span class="attribute">dilation</span>=1, <span class="attribute">groups</span>=1, <span class="attribute">bias</span>=<span class="literal">True</span>, <span class="attribute">padding_mode</span>=<span class="string">'zeros'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><code>groups</code> controls the connections between inputs and outputs. <code>in_channels</code> and <code>out_channels</code> must both be divisible by <code>groups</code>. For example,</p>
+<blockquote>
+<ul>
+<li>At groups=1, all inputs are convolved to all outputs.</li>
+<li>At groups=2, the operation becomes equivalent to having two conv layers side by side, each seeing half the input channels, and producing half the output channels, and both subsequently concatenated.</li>
+<li>At groups= <code>in_channels</code>, each input channel is convolved with its own set of filters, of size: $\left\lfloor\frac{out_channels}{in_channels}\right\rfloor = K$</li>
+</ul>
+</blockquote>
+<img src="https://tva1.sinaimg.cn/large/00831rSTgy1gcdf6hwbygj30zc0pin3g.jpg" alt="image-20200229174950253" style="zoom:50%;" />
+
+
+
+
+
+
+
+
+
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><p><a href="https://github.com/marvis/pytorch-mobilenet/blob/master/main.py" target="_blank" rel="noopener">https://github.com/marvis/pytorch-mobilenet/blob/master/main.py</a></p>
+]]></content>
+      <tags>
+        <tag>移动端网络</tag>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mobilenet_v3</title>
+    <url>/2020/02/29/mobilenet-v3/</url>
+    <content><![CDATA[<h4 id="hswish"><a href="#hswish" class="headerlink" title="hswish"></a>hswish</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">hswish</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        out = x * F.relu6(x + <span class="number">3</span>, inplace=<span class="literal">True</span>) / <span class="number">6</span></span><br><span class="line">        <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="hsigmoid"><a href="#hsigmoid" class="headerlink" title="hsigmoid"></a>hsigmoid</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">hsigmoid</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        out = F.relu6(x + <span class="number">3</span>, inplace=<span class="literal">True</span>) / <span class="number">6</span></span><br><span class="line">        <span class="keyword">return</span> out</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="SeModule"><a href="#SeModule" class="headerlink" title="SeModule"></a>SeModule</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SeModule</span><span class="params">(nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, in_size, reduction=<span class="number">4</span>)</span>:</span></span><br><span class="line">        super(SeModule, self).__init__()</span><br><span class="line">        self.se = nn.Sequential(</span><br><span class="line">            nn.AdaptiveAvgPool2d(<span class="number">1</span>),</span><br><span class="line">            nn.Conv2d(in_size, in_size // reduction, kernel_size=<span class="number">1</span>, stride=<span class="number">1</span>, padding=<span class="number">0</span>, bias=<span class="literal">False</span>),</span><br><span class="line">            nn.BatchNorm2d(in_size // reduction),</span><br><span class="line">            nn.ReLU(inplace=<span class="literal">True</span>),</span><br><span class="line">            nn.Conv2d(in_size // reduction, in_size, kernel_size=<span class="number">1</span>, stride=<span class="number">1</span>, padding=<span class="number">0</span>, bias=<span class="literal">False</span>),</span><br><span class="line">            nn.BatchNorm2d(in_size),</span><br><span class="line">            hsigmoid()</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> x * self.se(x)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>移动端网络</tag>
+        <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>tmux常用指令</title>
+    <url>/2020/02/29/tmux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/</url>
+    <content><![CDATA[<p>详细的配置和使用教程请参考reference下的louiszhai的博客。</p>
+<p><strong>友情提示：</strong></p>
+<p>小伙伴们学习之初先弄清楚两个区别</p>
+<ul>
+<li>会话和面板</li>
+<li>退出和断开</li>
+</ul>
+<p><code>tmux new -s demo</code></p>
+<p><code>tmux detach</code></p>
+<p><code>tmux ls</code></p>
+<p><code>tmux a -t demo</code></p>
+<p><code>tmux kill-session -t demo</code></p>
+<table>
+<thead>
+<tr>
+<th>前缀</th>
+<th>指令</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl + b</td>
+<td>Ctrl + z</td>
+<td>挂起当前绘画</td>
+</tr>
+<tr>
+<td>Ctrl + b</td>
+<td>“</td>
+<td>当前面板上下一分为二，下侧新建面板</td>
+</tr>
+<tr>
+<td>Ctrl + b</td>
+<td>%</td>
+<td>当前面板左右一分为二，右侧新建面板</td>
+</tr>
+<tr>
+<td></td>
+<td>x</td>
+<td>关闭当前面板</td>
+</tr>
+</tbody></table>
+<h4 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h4><p><a href="https://louiszhai.github.io/2017/09/30/tmux/?nsukey=sMp5CqCQZvJyCawq0vUlqLccV8n9jr%2F25yS59%2BxxsaeSmLxg31b2x7pHehI5%2BGCKykJGT%2BBSdzOcGFTlP678aaTylpwL3KOPgGiOD6YDSPUdUkQG3u8w5%2BjepXpC71M%2FHBtoESqckA7w13qg%2BFvpytSyKxEhkr%2Fwy7zemKxCumL63R4K8G97j1v7yTlETGzzBH0lx94TYd8vQClPzpGbxw%3D%3D#新建会话" target="_blank" rel="noopener">https://louiszhai.github.io/2017/09/30/tmux/?nsukey=sMp5CqCQZvJyCawq0vUlqLccV8n9jr%2F25yS59%2BxxsaeSmLxg31b2x7pHehI5%2BGCKykJGT%2BBSdzOcGFTlP678aaTylpwL3KOPgGiOD6YDSPUdUkQG3u8w5%2BjepXpC71M%2FHBtoESqckA7w13qg%2BFvpytSyKxEhkr%2Fwy7zemKxCumL63R4K8G97j1v7yTlETGzzBH0lx94TYd8vQClPzpGbxw%3D%3D#%E6%96%B0%E5%BB%BA%E4%BC%9A%E8%AF%9D</a></p>
+]]></content>
+      <tags>
+        <tag>tmux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Nginx反向代理</title>
+    <url>/2020/02/29/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/</url>
+    <content><![CDATA[<h3 id="Nginx-反向代理"><a href="#Nginx-反向代理" class="headerlink" title="Nginx 反向代理"></a>Nginx 反向代理</h3><p>写反向代理的帖子，不放个图总显得不太专业。找个网图贴一下。</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTly1gcd5yqlml1j319u0b4nb4.jpg" alt="image-20200229123459279"></p>
+<h4 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h4><ul>
+<li>proxy和client同属一个LAN</li>
+<li>用途：<ul>
+<li>为了在防火墙内的局域网提供访问Internet的途径。</li>
+<li>使用缓冲特性减少网络使用率</li>
+</ul>
+</li>
+<li>安全性：允许客户端通过它访问任意网站并隐蔽客户端自身</li>
+</ul>
+<p>举个栗子🌰🌰：</p>
+<p>老哥们都翻过墙吧，那咋翻的呢？ 唠一下</p>
+<p>给个代号，假设你是墙内的用户A，现在就是想上Google，上不了气不气。墙外的小伙伴用户B，就在香港距离你深圳的家几公里，就可以上，难受不？那么我们是否可以这样呢， A –&gt; B –&gt; Google , Google –&gt; B –&gt; A。这样我们就把小伙伴B作为了一个正向代理。</p>
+<h4 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h4><ul>
+<li>proxy和server同属于一个LAN</li>
+<li>用途：<ul>
+<li>将防火墙后面的服务器提供给Internet用户访问</li>
+<li>完成负载均衡等功能 </li>
+</ul>
+</li>
+<li>安全性：对外是透明的，访问者并不知道自己访问的是代理。</li>
+</ul>
+<p>再来举个栗子🌰🌰🌰：（举点我亲身碰到的事吧）</p>
+<ul>
+<li>一般公司里需要开公网ip的时候，网络管理员一定会给你开启某些端口，诸如443(https)，8080(hhtp)。可是我们再想在此服务器上加设别的服务时，难不成每一次都要去求网管？ 网管不耐烦了咋搞。 这时候Nginx反向代理就可以救场了。我们对外还是让用户访问443端口，但是我们可以把服务转嫁到其他端口上去。</li>
+<li>反向代理还不仅仅是在同一台服务器上进行端口之间的转发，我们还可以把服务从一台公网服务器转嫁到内网服务器上去。这样对外，用户还是访问公网服务器的ip，但是我们已经把服务转移到了内网服务器来执行。</li>
+</ul>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">events&#123;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">&#125;</span></span><br><span class="line"><span class="attr">http&#123;</span></span><br><span class="line">    <span class="attr">upstream</span> <span class="string">ggzy &#123;</span></span><br><span class="line">       <span class="attr">server</span> <span class="string">127.0.0.1:1399;</span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="comment">    # 80端口配置，可配置多个Virtual Host</span></span><br><span class="line">    <span class="attr">server</span> <span class="string">&#123;</span></span><br><span class="line">        <span class="attr">listen</span>  <span class="string">80;</span></span><br><span class="line">        <span class="attr">index</span> <span class="string">index index.htm index.py index.html;</span></span><br><span class="line"></span><br><span class="line">        <span class="attr">server_name</span> <span class="string">app.truelore.cn;</span></span><br><span class="line"></span><br><span class="line">        <span class="attr">location</span> <span class="string">/ &#123;</span></span><br><span class="line">            <span class="attr">proxy_pass_header</span> <span class="string">Server;</span></span><br><span class="line">            <span class="attr">proxy_set_header</span> <span class="string">Host $http_host;</span></span><br><span class="line">            <span class="attr">proxy_set_header</span> <span class="string">X-Real-IP $remote_addr;</span></span><br><span class="line">            <span class="attr">proxy_set_header</span> <span class="string">X-Scheme $scheme;</span></span><br><span class="line">            <span class="attr">proxy_pass</span> <span class="string">http//ggzy;</span></span><br><span class="line">        <span class="attr">&#125;</span></span><br><span class="line">    <span class="attr">&#125;</span></span><br><span class="line"><span class="attr">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>此处外网访问的是server模块下listen设置的80端口。</p>
+<p>而服务转移到了upstream ggzy模块下的127.0.0.1:1399;</p>
+<p>此处是转移到了本机的1399端口，当然也可以将ip地址设置到该服务器可以访问到的其他服务器。</p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><p><a href="https://www.jianshu.com/p/208c02c9dd1d" target="_blank" rel="noopener">https://www.jianshu.com/p/208c02c9dd1d</a></p>
+<p><a href="https://juejin.im/post/5aa7704c6fb9a028bb18a993" target="_blank" rel="noopener">https://juejin.im/post/5aa7704c6fb9a028bb18a993</a></p>
+<p><a href="https://www.runoob.com/w3cnote/nginx-setup-intro.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/nginx-setup-intro.html</a></p>
+]]></content>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>nginx</title>
     <url>/2020/02/27/nginx/</url>
     <content><![CDATA[<p>don’t BB , show me code!</p>
@@ -142,84 +432,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2019-12</title>
-    <url>/2020/01/03/2019-12/</url>
-    <content><![CDATA[<h1 id="12月工作总结"><a href="#12月工作总结" class="headerlink" title="12月工作总结"></a>12月工作总结</h1><h2 id="第一周"><a href="#第一周" class="headerlink" title="第一周"></a>第一周</h2><h3 id="1-完成视频帧的抽取流程"><a href="#1-完成视频帧的抽取流程" class="headerlink" title="1. 完成视频帧的抽取流程"></a>1. 完成视频帧的抽取流程</h3><ul>
-<li>主要操作文件<ul>
-<li>actioncam/modules/param/inicfg/hi3559v200/imx458_512M/config_product_workmode_record.ini</li>
-<li>actioncam/modules/param/inicfg/hi3559v200/imx458_512M/config_product_workmode_common.ini</li>
-<li>actioncam/modules/statemng/src/hi_product_statemng_rec.c</li>
-<li>common/videodetect/*</li>
-</ul>
-</li>
-<li>操作需要注意的点<ul>
-<li>Hi3559V200的芯片中对media的操作推荐直接使用HI_MAPI模块，参考《HiMAPI V1.0 媒体处理开发参考》。</li>
-<li>使用HI_MAPI_VPROC_GetPortFrame的条件<ul>
-<li>vpss工作在User模式下</li>
-<li>vpss的depth属性要大于1</li>
-</ul>
-</li>
-<li>区分media参数配置文件夹下的workmode和mediamode，我们需要修改的是config_product_workmode_record.ini</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-熟悉各种工作效率工具"><a href="#2-熟悉各种工作效率工具" class="headerlink" title="2. 熟悉各种工作效率工具"></a>2. 熟悉各种工作效率工具</h3><ul>
-<li>阅读大型项目工具sourcetrail</li>
-<li>远程开发 VSCode 插件 Remote-ssh</li>
-<li>Linux下搜索工具 the silver search</li>
-</ul>
-<h3 id="3-补充知识学习"><a href="#3-补充知识学习" class="headerlink" title="3. 补充知识学习"></a>3. 补充知识学习</h3><ul>
-<li>线程的互斥锁，信号量</li>
-</ul>
-<h3 id="4-修复bug"><a href="#4-修复bug" class="headerlink" title="4. 修复bug"></a>4. 修复bug</h3><ul>
-<li><p>0xA007800E 图像队列为空</p>
-<ul>
-<li>修改vport的depth，通过HI_MAPI_VPROC_SetVPSSDumpYUVAttr</li>
-<li>由于vport无法进行热修改，因此在操作时需要先stopvport，待修改depth完成后，再次startvport</li>
-</ul>
-</li>
-<li><p>0xA0078009 操作不允许</p>
-<ul>
-<li>vport被占用，通过修改config文件中的对应group的对应port的使能开关</li>
-</ul>
-</li>
-</ul>
-<h2 id="第二周"><a href="#第二周" class="headerlink" title="第二周"></a>第二周</h2><h3 id="1-继续完善sourcetrail工具"><a href="#1-继续完善sourcetrail工具" class="headerlink" title="1. 继续完善sourcetrail工具"></a>1. 继续完善sourcetrail工具</h3><ul>
-<li>配置tabnine代码补全工具的模型版</li>
-<li>使用bear工具自动生成所有依赖库路径</li>
-</ul>
-<h3 id="2-梳理海思架的videodetect模块"><a href="#2-梳理海思架的videodetect模块" class="headerlink" title="2. 梳理海思架的videodetect模块"></a>2. 梳理海思架的videodetect模块</h3><h3 id="3-在videodetect框架下书写算法调用过程代码"><a href="#3-在videodetect框架下书写算法调用过程代码" class="headerlink" title="3. 在videodetect框架下书写算法调用过程代码"></a>3. 在videodetect框架下书写算法调用过程代码</h3><h3 id="4-补充知识学习"><a href="#4-补充知识学习" class="headerlink" title="4. 补充知识学习"></a>4. 补充知识学习</h3><ul>
-<li>有限状态机模式</li>
-</ul>
-<h2 id="第三周"><a href="#第三周" class="headerlink" title="第三周"></a>第三周</h2><h3 id="1-梳理svp-runtime模块"><a href="#1-梳理svp-runtime模块" class="headerlink" title="1. 梳理svp_runtime模块"></a>1. 梳理svp_runtime模块</h3><h3 id="2-修改算法调用逻辑"><a href="#2-修改算法调用逻辑" class="headerlink" title="2. 修改算法调用逻辑"></a>2. 修改算法调用逻辑</h3><ul>
-<li>格式转换<ul>
-<li>HI_MAPI_FRAME_DATA_S  –&gt;  IVE_DATA_S</li>
-<li>IVE_DATA_S –&gt; IVE_IMAGE_S</li>
-<li>IVE_IMAGE_S –&gt; HI_RUNTIME_BLOB_S</li>
-</ul>
-</li>
-<li></li>
-</ul>
-<h3 id="3-修复bug"><a href="#3-修复bug" class="headerlink" title="3. 修复bug"></a>3. 修复bug</h3><ul>
-<li>flash_size &lt; model_size + app_size<ul>
-<li>将模型拷贝到sd上，降低flash消耗</li>
-<li>模型读取时要通过HI_MPI_SYS_MmzAlloc函数来分配内存空间<ul>
-<li>MMZ被分为多个Zone，当第三个参数设置为NULL的时候，分配默认的null区域</li>
-<li>在SDK的主目录中通过make menuconfig无法直接修改memory配置，需直接对.config文件进行修改，可相应的扩大null区域的大小</li>
-<li>在Linux端可通过<code>cat /proc/media-meminfo</code>来查看媒体内存使用情况</li>
-<li>在LiteOS端可通过<code>cat /proc/umap/media-meminfo</code>来查看liteos端的媒体内存使用情况</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="第四周"><a href="#第四周" class="headerlink" title="第四周"></a>第四周</h2><h3 id="4-bug修复"><a href="#4-bug修复" class="headerlink" title="4. bug修复"></a>4. bug修复</h3><p>- </p>
-]]></content>
-      <tags>
-        <tag>work_havon</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hi3559V200获得视频流</title>
     <url>/2019/12/05/Hi3559V200%E8%8E%B7%E5%BE%97%E8%A7%86%E9%A2%91%E6%B5%81/</url>
     <content><![CDATA[<p>文中所述的获取视频帧的方式是统一的<br>但是我们仅针对SDK中的actioncam进行分析整理</p>
@@ -340,9 +552,11 @@
     <url>/2019/12/03/VSCodeRemote/</url>
     <content><![CDATA[<p>有时我们希望在公司之外方便的进行开发。因此需要跨过跳板机进入公司内网。因此下面的操作就很有必要了。</p>
 <h3 id="VSCode-remote"><a href="#VSCode-remote" class="headerlink" title="VSCode remote"></a>VSCode remote</h3><p>我们来编写一下配置<br><code>~/.ssh/config</code></p>
-<p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1g9lwmnuf1lj30p60583z5.jpg" alt=""></p>
-<h3 id="proxycommand"><a href="#proxycommand" class="headerlink" title="proxycommand"></a>proxycommand</h3><p><code>ssh -p 10099 huima@210.75.252.106 nc %h %p</code>  </p>
-<p><code>-p</code> 跳板机的ssh端口<br><code>nc</code> netcat(nc) command<br><code>%h</code> Hostname 即<code>172.20.15.66</code><br><code>%p</code> Hostname的port，即<code>22</code>  </p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">Host host</span><br><span class="line"><span class="built_in">	User </span><span class="string">'最终目标机username'</span></span><br><span class="line">	HostName <span class="string">'最终目标机IP'</span></span><br><span class="line"><span class="built_in">	Port </span>22</span><br><span class="line">	ProxyCommand ssh -p <span class="string">'跳板端口号'</span> 跳板username@跳板IP nc %h %p</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="proxycommand"><a href="#proxycommand" class="headerlink" title="proxycommand"></a>proxycommand</h3><p><code>ssh -p port jumpUser@jumpIP nc %h %p</code>  </p>
+<p><code>-p</code> 跳板机的ssh端口<br><code>nc</code> netcat(nc) command<br><code>%h</code> Hostname 即最终目标机IP<br><code>%p</code> Hostname的port，即<code>22</code>  </p>
 <p><a href="https://www.cyberciti.biz/faq/linux-unix-ssh-proxycommand-passing-through-one-host-gateway-server/" target="_blank" rel="noopener">https://www.cyberciti.biz/faq/linux-unix-ssh-proxycommand-passing-through-one-host-gateway-server/</a></p>
 ]]></content>
       <tags>
