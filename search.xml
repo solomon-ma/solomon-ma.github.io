@@ -1,6 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hi3559V200 runtime mapper</title>
+    <url>/2020/04/17/Hi3559V200-runtime-mapper/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="a9d5b1935aebcbe3695fc89f2cce812b793552ea1ed5c97a291d914c30c6b74d">5d6ced19660003280fc9ce7167486eef7600811971b123f486fed73e804305b32ae84f23cb30771e77d76c29134382104da65256cf470073a7f3b47d95b6b1d7ef4519e0c2bf58b9f63e55a1470f44b8badbc26800838a82dd08cd617306a86720de234bfd39bdedd1aba116e6fbd0c608729002d17b8774571b3f09535420ad704dd08efc845709bf555accf8344c1f3bc1f9b7b006a90b41eaed9453bb17a758dfedab5a4f3c4c68b600736047b366b497126a6e32ea14f7047c2d306f299cfde9a0d1e1836f22920d830935cadd4a70f3857508ecca1a7f45ac0903d9d0b0de17951e20d246fa98ac70371e06bb98dcb9be54c41a59065aa905e425fcfbfe6299625335f0d81119f3295d38c4b28d0f4c70c723813f3ce10e075e2c91e4501d106b2696323daac5643cd9ac0d3bb501acfe8b66bd604bed0ec545fc005339d49f8f0638e14827f52f2478fa1c2bae2d5a5dfbeb6a02334812e9e2a01a4974abd01b077b3c11a129aa15a6e331dcccc61a584754ad357d27f304c53ede1c19e5b98550f951868e1ec7569eae0b5103ec53177f1d9620afa7901ea7325a5b020fc39b85185e1775aeded3ef030da6d0b48b49b3be73e217940661ce51d9634e4d202d4cf5a710587923778ea564b4ab9bc212ceda9432aa333273be6c293e545dcd48718116422019184560cca402393be78cadd0349ff76f2febb88464cf445b6da3a77c7e1c2129cfa6940bd6e503da26fdd059190c5f955320bfc07e9ffc20255f87cb7cbf54eef079167a42310f48b2a2abb751c0357cdd4e9a985c7c311a641a0afc16edec3809ad04b7c91d68</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+  </entry>
+  <entry>
+    <title>Hi3559V200-基础知识补充(Make)</title>
+    <url>/2020/04/17/Hi3559V200-%E5%9F%BA%E7%A1%80%E5%8F%AA%E6%98%AF%E8%A1%A5%E5%85%85-Make/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Reinforcement learning</title>
+    <url>/2020/04/17/Reinforcement%20learning/</url>
+    <content><![CDATA[<h2 id="Reinforcement-learning"><a href="#Reinforcement-learning" class="headerlink" title="Reinforcement learning"></a>Reinforcement learning</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd0p4otsodj312y0qwx4h.jpg" alt="image-20200320210602418"></p>
+<p>少数的action才会有reward，大多数的操作reward都是0</p>
+<p>Supervised learning ： learning from teacher</p>
+<p>Reinforcement Learning：Learning from experience</p>
+<p>Alpha GO is supervised learning + Reinforcement Learning</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd0p9a33qjj30zw0qgdux.jpg" alt="image-20200320211027376"></p>
+<p>应用</p>
+<ul>
+<li>interactive retrieval</li>
+<li>flying helicopter</li>
+<li>driving</li>
+<li>google Cuts its giant electricity bill with deepmind-powered AI</li>
+<li>text generation</li>
+<li>playing video game</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd0ry8l0bfj313e0t24la.jpg" alt="image-20200320224338033"></p>
+<p>一个episode包括了很多turns，直到这个game有了一个结果才有一个reward</p>
+<h2 id="Difficulties-of-reinforcement-Learning"><a href="#Difficulties-of-reinforcement-Learning" class="headerlink" title="Difficulties of reinforcement Learning"></a>Difficulties of reinforcement Learning</h2><ul>
+<li>Reward delay<ul>
+<li>在星球大战里，只有“开火”的动作才会得到reward，但是在开火之前的移动可能更加重要</li>
+<li>在下围棋里ALpha GO，有时需要牺牲当前的reward来获取更long-term的reward</li>
+</ul>
+</li>
+<li>Agent的action<ul>
+<li>探索！</li>
+</ul>
+</li>
+</ul>
+<h2 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd0s6e0ey4j311m0se7o2.jpg" alt="image-20200320225127823"></p>
+<h2 id="Materials"><a href="#Materials" class="headerlink" title="Materials"></a>Materials</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd0sfglo12j30ys0nah4b.jpg" alt="image-20200320230011557"></p>
+<h2 id="Policy-based-Approach-（Learning-an-actor）"><a href="#Policy-based-Approach-（Learning-an-actor）" class="headerlink" title="Policy-based Approach （Learning an actor）"></a>Policy-based Approach （Learning an actor）</h2><ul>
+<li>Neural network as Actor</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd1oinnopcj313c0mo4f9.jpg" alt="image-20200321173025822"></p>
+<ul>
+<li>Goodness of Actor</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd1oo8fuhmj310o0pqnip.jpg" alt="image-20200321173547704"></p>
+<p>由于每次游戏的动作和环境都是一个随机值，因此此处我们是希望R的期望值最大</p>
+<p>计算此期望值</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd9jflkqnrj310q0pgk81.jpg" alt="image-20200328123853573"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>HI3559V200 基础知识补充(内联函数)</title>
     <url>/2020/04/17/HI3559V200-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0/</url>
     <content><![CDATA[<h1 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>在C语言中，如果一些函数被频繁调用，不断地有函数入栈，即<strong>函数栈</strong>，会造成栈空间或<strong>栈内存</strong>的大量消耗。</p>
@@ -434,15 +498,15 @@
   <entry>
     <title>Hi3559V200获得视频流</title>
     <url>/2019/12/05/Hi3559V200%E8%8E%B7%E5%BE%97%E8%A7%86%E9%A2%91%E6%B5%81/</url>
-    <content><![CDATA[<p>文中所述的获取视频帧的方式是统一的<br>但是我们仅针对SDK中的actioncam进行分析整理</p>
-<h3 id="获取视频帧函数"><a href="#获取视频帧函数" class="headerlink" title="获取视频帧函数"></a>获取视频帧函数</h3><p><code>HI_MAPI_VPROC_GetPortFrame</code></p>
-<h3 id="Getframe的要求"><a href="#Getframe的要求" class="headerlink" title="Getframe的要求"></a>Getframe的要求</h3><p><code>dump depth &gt; 0</code></p>
-<h3 id="media-config文件解读"><a href="#media-config文件解读" class="headerlink" title="media config文件解读"></a>media config文件解读</h3><p>配置文件均放在actioncam/param/inicfg/Hi3559V200下</p>
-<h4 id="mediamode"><a href="#mediamode" class="headerlink" title="mediamode"></a>mediamode</h4><p>定义最原始的media通路参数</p>
-<h4 id="workmode"><a href="#workmode" class="headerlink" title="workmode"></a>workmode</h4><p>workmode中我们首先要关注的是poweron_action和poweron_workmode<br>首先我们的poweron_action默认为IDLE预览模式。但是我们的workmode中并没有对应的模式。</p>
-<p>因此我们需要更进一步分析。</p>
-<h3 id="VPSS"><a href="#VPSS" class="headerlink" title="VPSS"></a>VPSS</h3><h3 id="Vport"><a href="#Vport" class="headerlink" title="Vport"></a>Vport</h3><h3 id="Videodetect框架"><a href="#Videodetect框架" class="headerlink" title="Videodetect框架"></a>Videodetect框架</h3><p><img src="https://tva1.sinaimg.cn/large/006tNbRwgy1g9luxjpe9oj31nt0u0n70.jpg" alt="videodetect">{:height=100 width=50}</p>
-]]></content>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="20b3e8b9073e5cd3573ae89128e2a36140e5a45c9d1cc2a3c35b248107bb0404">cd1f4316f623bc5187d8178a1129a62d5234d780661a8f46304fb3f9ab18374eb7cd70802f935b29354084321dfc948333540d315a642562e607125d42b002e890bbc3eec7341d27b69a9f499c5e63f11167fd0ab18612b3ccb9a580faa68be9e859c733093c901ced7ed72e69d05c4146c50dba578af33c5e4cf988bad41c494483e5df1f33b2ea17866f2cf57b27143c657af4dc03ca5d82a52ccc3b69c5bb2024e295ed44fee55670b0c1c9d8140360db95fa5d9d472fa4df5e82f1760e275e36026e9753bf8b7325f6069def82dcbc53edafdbbf7fae679e5e9c878f6b876a04df4c845e20da1b00702a1d684f1425cf72b595806a6ef395c9b6ec55d1e0c6368b809be01df7db4528d390ce4fe243aa2eded0ea049a68f9781738e79673b98790b95b7249e426a1f69aa70a9d49859a23689108a31e2a056c3b7613e43f1ef98da587bf79a10a0143df90b4204162bcabe150f8ad7fde0655b1ff374f6e1c6b969cd8128dbaa79087cf61f099e8deeed8fbc48adb137bd411b79b88ae5d4e49d1c506d05b546322b33caa888b646a269e8ad5d607a4ae50fd1fcb6ee27af5a869c442da5337cde31c2fb7fde1cd360a5180fbe6c71e50da181fbfd0d6beaf33bf012acd8f60f846baa63f87b1f08a357df085af9c15d67e2d7432a942aed4bdd6cb6588c8dbea61255a28f1eb609fa3f50e04b33f5ec51b995b9fa0844dee0bbced0d78b3630c432c4fa46a777b3282ee4313cf156584e296c9af055113709b0c1c14a717a34604b93d1d85c1946cf09e20bdc1f428bc564b8268a446bd8177f2a46cbd07c6dd9c4a0ae25164c7aaf8e5261e115577d0f60b6c88f1735460a30033fb9ea53c3bbb56857d4d87a4086bdfdbbebb7b155cd7fac68eda48abbf98c92d3b4a4b9832e18db78dece9191d8d52afd54b3bf15c3862381889c8b7f663ba2506f61d12f608e104fb0e0c3124a4746630fc220c5c4867515f3f09b706940f80881e5f246b035f3d96cab87ff65977b61df60b7ab70cda24a3c2608c380056d057968b43d0b8542f580aef1d11aad44ac09c82ce741e94268e8d110dd15c7c6ac2cc79ae510b1cb266f0786e8bd77214d9608eb471ba6dfed8c95fc36331e1b58ad2c10f4b1c251681ebc279fb573eb48d73c1b92f8ff18bf2e41816c2d1d56374b0a720474c47d0e0de74ab1298ab3e4e6ca5961f8ce1c701d02804db81640cf2da7ee40bc6bc0a36a32b2ee1ea8fc789cc85f8f385f27b95aeac1fe99a3facad90c1db88f69256798ad009e05eb1020a041fed55f26d9e90e3b84b8a97ad029756dac15f38b7c3b3a753ef76c1b8fbbba880737eb2181dd09b8abe149c49b23b364271629b3cbbca1a3d46c735cad75fd8d15d73e3d979f4b3ee454058ef80eae5fbb75c2e9cb77bfa18b76f4712fb701f035d3a25c0c7aa7d3004a8162f4456f56eb3eaa2d2021b0f536c5df5955d5dc2cee4ce057b3827ba92ad6f9a7591e38585c9ff067a03cc716862c442e5d2df5d98b6e555430fe8f683de0b0aee1ceec16d7d2890a24adfab632d9c61b517be32bf5a14aab429e687c87fa321fadd7edb7b3d536fef70904ee4c0b6650ec554ba98eea77e3014f4f973e35deeffaa1fa033528992638f858067be6ac9838cf2b5ab46570e33f7c44e247bf3cbb0b5f35534ae82f7bb99f01bb0b2482221d70d25f0575a173ab9855993c96836e54b784d067ee181f0858ebbdbcb8a2444d2b9e5550162b1fa79627c66acdf19097c0580ef1b4f36d9fc872c50a3a0f0fbdb1c2f0fd5c99b20109aed5d6176dc436322e9767caf4970757fc78dab09279514bf21025d1b30fbc5629d1f77747b152f18b6dadbe654fed73133041b750f73af7e0b61ac42af08015a6bbd748f247349b3f8f14a6107b8edae84453ced93919a2f343167a4cea67193471805b9a46f3fd0e2c10ae99152772dd7db1791a44781585da13d96850577738df25d0a8a4fa173d28b146bdc3cae94d234feb4dc9ca48c4a8766f353887dba2ba8f8899c20c0c9eefdc7675e06b7c9acd48e71bd420ef4889ea1f08884dd7e5ff23e3f2cf978266ec52a2e6ac970c4b5b0d4457dc9e7bfa4bd9b93bd49d0965fc80cea6cc3fbd3ae47f22d50c33dc66901cf37adf2ab62373bdb5ac87b164d5a8597291a67380f2a2b352b16aab50f63fb767be0c83e5abb4a872c6fcab1fd4eeb70a498fe25ca44465fdf59195fb75aa798</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
       <tags>
         <tag>海思</tag>
       </tags>
@@ -514,35 +578,15 @@
   <entry>
     <title>SSH安全连接</title>
     <url>/2019/12/03/SSH%E5%AE%89%E5%85%A8%E8%BF%9E%E6%8E%A5/</url>
-    <content><![CDATA[<h3 id="SSH安全连接"><a href="#SSH安全连接" class="headerlink" title="SSH安全连接"></a>SSH安全连接</h3><p>修改 SSH 服务配置文件<code>/etc/ssh/sshd_config</code>提高SSH安全性</p>
-<h3 id="关闭密码登录"><a href="#关闭密码登录" class="headerlink" title="关闭密码登录"></a>关闭密码登录</h3><p>修改<code>PasswordAuthentication</code></p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"># <span class="keyword">To</span> <span class="keyword">disable</span> tunneled clear <span class="type">text</span> passwords, change <span class="keyword">to</span> <span class="keyword">no</span> here!</span><br><span class="line"><span class="meta">#PasswordAuthentication yes</span></span><br><span class="line"><span class="meta">#PermitEmptyPasswords no</span></span><br><span class="line">PasswordAuthentication <span class="keyword">no</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>复制公开密钥到远程服务器</p>
-<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">ssh-<span class="keyword">copy</span>-id -i /<span class="type">path</span>/<span class="keyword">to</span>/<span class="built_in">public</span>-key-file <span class="keyword">user</span>@host</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用安全算法"><a href="#使用安全算法" class="headerlink" title="使用安全算法"></a>使用安全算法</h3><figure class="highlight smali"><table><tr><td class="code"><pre><span class="line">Ciphers aes128-ctr,aes192-ctr,aes256-ctr</span><br><span class="line"></span><br><span class="line">HostKeyAlgorithms ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521,ssh-rsa,ssh-dss</span><br><span class="line"></span><br><span class="line">KexAlgorithms ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group-exchange-sha256</span><br><span class="line"></span><br><span class="line">MACs hmac-sha2-256,hmac-sha2-512</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="使用安全性更好的密钥生成算法"><a href="#使用安全性更好的密钥生成算法" class="headerlink" title="使用安全性更好的密钥生成算法"></a>使用安全性更好的密钥生成算法</h3><p>使用<code>ed25519</code>或者<code>RSA 4096</code></p>
-<figure class="highlight armasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">ssh</span>-keygen -t key_type -<span class="keyword">b </span><span class="keyword">bits </span>-C <span class="string">"comment"</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="禁止-Root-远程登录"><a href="#禁止-Root-远程登录" class="headerlink" title="禁止 Root 远程登录"></a>禁止 Root 远程登录</h3><p>修改<code>PermitRootLogin</code></p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">PermitRootLogin</span> <span class="literal">yes</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="更换端口"><a href="#更换端口" class="headerlink" title="更换端口"></a>更换端口</h3><p>修改<code>Port</code></p>
-<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line">Port <span class="number">1122</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="9ea3d8c414523d9f1e4c127660df930c49cfa3f2272710b1686c0341b19b6c14">440eac3900d84e474b5c72ca8d2a3f37026111f918f687da77a8e5e5b332fb6e6bc2ca001c3b6e837848e9ad3b8c20a21e38ed412f5ae27d4d945eb7479dc545f1c97efa7e82ef44be64578bfc4f751a4fa368909cc91652b39ea492053cba35e604e3334a9e28350a231e5adaf896719e164697f444ee4f911f5f33742168e2d4ba0e225eab630c153c50518c986b0118c3d125f12fc1586c5dc9b78b9d651f3d5f2cac3ab65c60027a3d1ea925f7f341f9427d3c952664825164fc1acaf0e28fce952b14e154cd0864697ae8122a326fdc7496cd3411d2a4d141acc66c9178ba4b325974066a91d9da8898624984f06f75f018f2571e5aaa61d86b48348a29352fd1098ad410f8c84b356766610402367b01d3b453097eedfec576ff5e5aa8799c9b17d3a4d13b1974c8bac151d7c6d3a729ba49ce02e1f2afb36268a2629c031bd0a39c0de40774bc235423d4755c0cdbbfaade020feb8dcfd5ea7d67ed59050fcb04669082486f5dd4644034cfcffcdfbe239a63223545f37f41b672e847276f540f35043fffa0846a3cf673189d1d7c76fa5d4ca0129b53e295d94d7acb9f1a5958bc5a2fd156d98098b8bb72531f9364660f8091efcde55fd26b93bcf631c1811be16be310718c3af9d896fb62a6903c7aee983aac942c3b13b261b84c24a3d6524024c3821c4530cce9cb0e460432685b651573b54c686c2453576ae169fd1b56cb4e9edba048b30d63bc9488d875bfb7871f84e97ffc29315d89c858152dfcaa514aa533ba0a0852320c1bfef5691a0a22ca89134db39ed69c2457d4ef387a1c034b8ce551c040ed4a96009f59d704319181a2f4047457d39466d3d6a32fbca5c7163b817af2beeafd67febb86b1f34af4beb866b1288701c9a9be9567c4850f50ba4118e1c939b956b07636c843fa48dea2f1bb53dd52056dde909aa1b1ad9e67f4c3057d388dda56be6428641b77499384e496ce321a166f60f20e511e7b3ed57d6fc18759da5e24fbafb1e97577f10dfcbf11ba17c24cce058998e1f2674e3754a7fb4df3b464c149cc4aea9fa5e97cd6510e6ddfde0460650c60846b5432b41885c5159088c40f6e81da5c923b28e6f92dfe878ddb457919add5f145919c22dde9fbb609df0b1ad832ba0b9be8e31aaa3e21449159e950a3affb04337f5c79e28f3f10737cb54d9db8dad95dd556970932e1766989107483569f3d57ace568bf7036cb4067bdcfbcef55498b877c306efcb7f8b195d723273ea378b0f2fed3e8d22d7cf41cea6a38ff7ca50132488a94a2e7297bb5046eabcf88ee5a68090e7dcf852a7f0a6fb995dc0679dd201d9a6a5a22326d8967a34c4d3f27056e71d1957f7d8f4819eb73902842316ca82c535c10b66d30df4c53f3e2555bec3ab0b09dfe68af10f95366f7b45b99fa51a7793590c232093e3859f6af263a24cc39e3b991ff7c743424d7bdee4dfa0c701a10bcb4d39abf1e5bf0cbb87ff7a5e09def61ee5dbeb4728d41c156df06351bb23f4da6819489fcb2b7c6f00b344b1cb6e2c8b6d6766cbe47af3a5165a6441948a962d06c9adcd080e7c04893ccafc8e86912752068b84b8e4ee12fcaeb34f5d1a2fe952b6a564832a540417aab4c4496153c40bcc4830a259e85a9a33f77725e19701432ebac53cc0907e1258c9b3fc20fdc3eeffeef6fb98820e23466f4757e9d744bcb59edc057f86c2cffa4a2d4f64814737c0cb76ee02aa7f317a3914990e3507ce63fe90c7c32bebb26ad3c02d698f3d36180a64c21763b372dcc47aeae1e8e12202ba930a4e4dc0fdb58dfd1ae24be492e3f058869bd3c4c14939f7d2e69888d78f2018890bc348c4705ed84c26f6bf769ac602f166513417cae987b3bb1807e7c9a9a7c8a71d63511e7c581263100021c74f4d499da7bf6a7548eb8043bee023ca4ae5b9f1c390dd69e24d73665a075b89584e8121fc2ec74956ce700de18c95e8d247127b00005d657a11e1907ffc14b924e5c5769e7893dec8808b9b8984846d7a4908c708cd9f826abd69bab686a669429b433498dea7c9125efb6d69a163b1663d6304d0e3258dd8c7f7e5fed7e79e14c5524aa2d19be2a33aa01c742a7b96908c844592398b31395595dd017a88e1fba3abcf495c2e87ab451e8fb048c0e154ffa38d3b905e2c2651c6f980d26ea86c8e9553fb2b6f5a903fcab0db0be22f3c6c2a2857d83bc5f5db1a760aee45fe61957e2d0b511d100176e0e4a7e01d5778a82afdb4ce7fe3c35a0594d71224805cca4641269598d04768fd04b463bcadf83e217c5905c99368301d9767c8ead5062ad397e7c437aa10bf3aa6dd9b732df3df47cc4094db811700c98aec1908954e984ecc7fb12519dd5d52031ab6c93915171f9a161f66d5ce323101452044b7d86d41fad86fb7f06f2cb798a2960bca6b95479466022d434bd858d244196d978357980c6c853ebf52c9c0173e15ae41be87ee6d570be23f563d649c4badcd282dc3c2a587329fdad3126a05787f3c7e0984df41a6e7a8efb5b4cf3a21620a5e13bd66811dbe5cdd6a5990e61f7e8ad265d0bc3d0af6ceffb5d260ce8af91558de9a0fdf53fad548d6fe5e4019c93d34215f05c3b881c139fd356ef94d8b4cf4d72bedad1cf718f65acc240380f90182d922c7d6a9e4e6e39cb013e348702f83097d490abf56d7cc8a870dd5970896556454358e6ca9f3c05a2202b6126d7a6726f767f02d551fa85ed67ea23b1ada87915233eceb21c6ddb19796431450cad5f23186c7d360c30e0f4568421832ae9467e3053ff90a261a8d92b7eeb9e36f6f7c18c2bce2a5823428b1e6c5c5054aa37417d1ce41a82099fb456ab25234140b867cb3688242a7e4f0df9b320f24f57c6e707ccbc9773f260e7427be6d3d025b7720f7c72b4ff256b12521a2cdba4d331e3b8cf37db74f0991b3ec294496699b3c033bd8df9f81bb3477d00010837600cfe52618aed5e7fac3929d61c41693e82a774d07ffa518d572e82b12b23bef68d185c15fc68ef2f94ca22fdaaf12cbbca186f33669af88367161e36042134ac87468e728cc6f6fee578217ec2d81ad35ee8146014d662e1136ece1e47769482ade422123b7f0543c5eb3f1477ff27bc53cff42db805813dda355b5936bc14689b86cd3aabcd5348b5161b32694028f4d5ef98083d54bd208c76ca7e4aebbc3d8f2359467261c9482c138cea3bbba10a337e736572b847d3b2278784d4e3f45950bdbfe3f9f73c0ff546cad10fa58006ea6e4d6d1e555f8963fbe63fde936dc063ebbcebcbd1be2fcb726e29854bae15a7d1651c6572da02f245f4e36c62d10aefa031aa09bb84aae57cc72a7650d756b089e4ddef5934be2a9ac2da2673b90eaeff930fddba9c3a82a14e8a6075e608697022e47f95e86dacc37cabec318e1c16f40bf459c2d317a0894d16bfc7cbed4a8f903877dbd2b3fb3c48f1a82eabdf8df3bf48fe04b6cfbf725bc266a97a2c3e4955dc844f5d96d3f2d078191b9720123b4fb2cb0277a225933ab435d953c69bb5f6d66b9a2b34f3c34de6eecbca67e76c018a6cd51526e4b52a60cb4bcfcb4057340bb067eeeae434f8266a9ed79e0f8d4d978da74038b9d18019ce15121da4a1aa2c3b8888106e40d5a3f0ac0a5547c276ebbb8a3a51876863cfebeb050706c721e81538286a764f7ecd97208cb1dd8e18ac7f5f7ba5215f364f9456a61a3276e878d4e7377b5f80c39e2324296ac350a4fc9b482ec8ef86efaf51785fb373cf84c12d5ccbc4a210711963bafb3c8bccaeece5c565ac16368419013f5d1b7e3ad2c6aca4108bfe03a006cd0089728fd3d63f666542605dae6ff335242d6a97b35bf8ae6445ed79304a166a03caab2a19f42b1e4981958d31ce8aa9c3eb7b6f95ba24980708fad121606ebf18c2ed432518f7fb28f55bdec600e0d9707b26ec6b3da21bc3a170bd02cefd3fafbc6bb1fb428c68b03426ecdcc57eacbf57fa207bcbc8a36a2dd6dc6721db3db08d47399461f1b24ef878a3588a8c53660a97226ba1a865e67743d9fd4479a3b2f29d700f618ca773809e39aae479edd971ffab1fb26a67184f1f778cfa98d1f63506ee38b17ab5dfb9f03fa39d506971bfb34530c5453096975dc421070da7224650a404ce4f190c926c330d9c43dbc43f5bce5afa4f0055c537272583fd6b7886978cef279d47652991beb49258e8ee3030bbfbe0da5e1c593524e828556435de62c4fd2837f79c791f69073d91d0c007601d0abc7a298cad226f0dfd63d5d0fc04f35f5fe590e76948c133aa73ae1cdcccba1257cb0a3149622b55603f9f4913558bb1ec1c701e3a9d2f68a125b41768c2954d8b59df4a5d79c5eeda79f9835417ae10647550d06a322d90659594f107d0045fc6119a58ee363d8cde60b18e2ed90c32679e38d58a46de36759aa270b025ac227d88febc750433d4cade9ad60b6d3c40ed5a17d40be5fd550f33f09428c9df21a8048e23f0d877c6013489d167ded67c0fea6b1ab2c084d9672e2a94a13d9776188c2dac164ed23c2c719e946b2a7bcde73a264007cc55ed7a004265b07e0039f807e18e77e918ea554c3bf1e05dc5a130277b20282e2c3e2c786ed04558c54aa8c480152a96a96008d2da9a78ca138c5f6a7c6e6e3ec4d8bc4052d32ced5fbedf7618b32d5eedfd9fe39cd79060a58ae35fe45c6f160bb8388c61639ea99069727d1c35bf953bd73b124f96fad52025b131dd64ea52bdf60b00e1ed3204111b7cb56436f0d3a3f4b117795cfa05843dd3d8226510d9e911a1e7352d528f6ccca70245235350e0be52e0cf5415f089f1b9d5007889151d3be00771bcadf63ffe6a5dd532be1f62055c711922fe4a42b45490e6c2c27242cd6edca8115057360c1e4bca5652a2ae1cb752b39fb4259ba0839a42d3498dcfd2289a0ca9b563fe631748d21db67559bdf47e3c1d888c1e31faccd051c8ab198f5c6a9ec685d48b0877fc7a18788aca5824d555a4160ecfbff395a24d4b9287e2c6f749d16f7e01f37b0397409f126d7ab37f94d30e73a9f902e73866a56d19dff132bb77eb153af38d0b7e7f1332041f31d4e7b354594848f6d4dddb77fd08f93540a49c6a445a6ab0b9d4b1549ba6b3153e60b323b019d9a2dce4ebd123e1b5071aba40492d54f4ca53deb6aa6985ee45b648020a3d290842008eeda24dd06109065d96d41e87b512b9fd2d54dca01068aff2f1a6b81e2ef24afac48691e90ae734b5fa1ac4df276d0dfb3d047ea0fc4c46018b1d432da9c68997c675f4f99303f9f6324ae08540de9b0859a54c0d9867f7a59a4c51aa9e63fe649fc943ed54aa9e1a625bfd46c52f2f6f962716c9587da3459f4bd5680ae9eb1a9aca9ceb14fae2ab670cfa138611b55dae55f0500973e5f36cfa045d50a586c245bc743b1b442d4ceefcb396482f9a0682ded2f359d4e17020d1d909d3d03178ea30b541b6314834137489ac99f751ea534b55e95079bd78bcf808d76f4d43cd393e04e3b37960b16fe25d0e206e96193a124bcf74e1c3d4faa232cc2983305d7ec9ae5fdad2e862beb69abcda5eebefe69f1fdbf53cafaa30b44a0e19fddb377192d373378cbed2991c528212b6bc59bb10b91bb40ebb8fbdb98bbce2868f3e8d243883f2aac92178abb2ce9b4637b7219eeb0b06e8f3a6e921fb967c8c4e2a9a0a2c</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
       <tags>
         <tag>ssh</tag>
       </tags>

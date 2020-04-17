@@ -2,6 +2,18 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误');
+                history.back();
+            }
+        }
+    })();
+</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 4.2.0">
@@ -17,7 +29,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"solomon-ma.github.io","root":"/","scheme":"Gemini","version":"7.7.1","exturl":false,"sidebar":{"position":"left","width":300,"display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"solomon-ma.github.io","root":"/","scheme":"Gemini","version":"7.7.1","exturl":true,"sidebar":{"position":"left","width":300,"display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="马慧">
@@ -187,6 +199,240 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://solomon-ma.github.io/2020/04/17/Hi3559V200-runtime-mapper/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/huima.jpg">
+      <meta itemprop="name" content="solomon-ma">
+      <meta itemprop="description" content="马慧">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Solomon-Ma">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/Hi3559V200-runtime-mapper/" class="post-title-link" itemprop="url">Hi3559V200 runtime mapper</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 17:26:58 / 修改时间：18:05:50" itemprop="dateCreated datePublished" datetime="2020-04-17T17:26:58+08:00">2020-04-17</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>runtime mapper简要介绍及wk模型转换方法</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/17/Hi3559V200-runtime-mapper/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+<div>
+  
+</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://solomon-ma.github.io/2020/04/17/Hi3559V200-%E5%9F%BA%E7%A1%80%E5%8F%AA%E6%98%AF%E8%A1%A5%E5%85%85-Make/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/huima.jpg">
+      <meta itemprop="name" content="solomon-ma">
+      <meta itemprop="description" content="马慧">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Solomon-Ma">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/Hi3559V200-%E5%9F%BA%E7%A1%80%E5%8F%AA%E6%98%AF%E8%A1%A5%E5%85%85-Make/" class="post-title-link" itemprop="url">Hi3559V200-基础知识补充(Make)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 17:26:02 / 修改时间：17:26:21" itemprop="dateCreated datePublished" datetime="2020-04-17T17:26:02+08:00">2020-04-17</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+
+<div>
+  
+</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://solomon-ma.github.io/2020/04/17/Reinforcement%20learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/huima.jpg">
+      <meta itemprop="name" content="solomon-ma">
+      <meta itemprop="description" content="马慧">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Solomon-Ma">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/Reinforcement%20learning/" class="post-title-link" itemprop="url">Reinforcement learning</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-17 17:14:10" itemprop="dateCreated datePublished" datetime="2020-04-17T17:14:10+08:00">2020-04-17</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Reinforcement-learning"><a href="#Reinforcement-learning" class="headerlink" title="Reinforcement learning"></a>Reinforcement learning</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd0p4otsodj312y0qwx4h.jpg" alt="image-20200320210602418"></p>
+<p>少数的action才会有reward，大多数的操作reward都是0</p>
+<p>Supervised learning ： learning from teacher</p>
+<p>Reinforcement Learning：Learning from experience</p>
+<p>Alpha GO is supervised learning + Reinforcement Learning</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd0p9a33qjj30zw0qgdux.jpg" alt="image-20200320211027376"></p>
+<p>应用</p>
+<ul>
+<li>interactive retrieval</li>
+<li>flying helicopter</li>
+<li>driving</li>
+<li>google Cuts its giant electricity bill with deepmind-powered AI</li>
+<li>text generation</li>
+<li>playing video game</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd0ry8l0bfj313e0t24la.jpg" alt="image-20200320224338033"></p>
+<p>一个episode包括了很多turns，直到这个game有了一个结果才有一个reward</p>
+<h2 id="Difficulties-of-reinforcement-Learning"><a href="#Difficulties-of-reinforcement-Learning" class="headerlink" title="Difficulties of reinforcement Learning"></a>Difficulties of reinforcement Learning</h2><ul>
+<li>Reward delay<ul>
+<li>在星球大战里，只有“开火”的动作才会得到reward，但是在开火之前的移动可能更加重要</li>
+<li>在下围棋里ALpha GO，有时需要牺牲当前的reward来获取更long-term的reward</li>
+</ul>
+</li>
+<li>Agent的action<ul>
+<li>探索！</li>
+</ul>
+</li>
+</ul>
+<h2 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd0s6e0ey4j311m0se7o2.jpg" alt="image-20200320225127823"></p>
+<h2 id="Materials"><a href="#Materials" class="headerlink" title="Materials"></a>Materials</h2><p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd0sfglo12j30ys0nah4b.jpg" alt="image-20200320230011557"></p>
+<h2 id="Policy-based-Approach-（Learning-an-actor）"><a href="#Policy-based-Approach-（Learning-an-actor）" class="headerlink" title="Policy-based Approach （Learning an actor）"></a>Policy-based Approach （Learning an actor）</h2><ul>
+<li>Neural network as Actor</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd1oinnopcj313c0mo4f9.jpg" alt="image-20200321173025822"></p>
+<ul>
+<li>Goodness of Actor</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd1oo8fuhmj310o0pqnip.jpg" alt="image-20200321173547704"></p>
+<p>由于每次游戏的动作和环境都是一个随机值，因此此处我们是希望R的期望值最大</p>
+<p>计算此期望值</p>
+<p><img src="https://tva1.sinaimg.cn/large/00831rSTgy1gd9jflkqnrj310q0pgk81.jpg" alt="image-20200328123853573"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+<div>
+  
+</div>
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://solomon-ma.github.io/2020/04/17/HI3559V200-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -212,7 +458,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-04-17 15:18:06 / 修改时间：15:30:49" itemprop="dateCreated datePublished" datetime="2020-04-17T15:18:06+08:00">2020-04-17</time>
+              <time title="创建时间：2020-04-17 15:18:06 / 修改时间：17:26:30" itemprop="dateCreated datePublished" datetime="2020-04-17T15:18:06+08:00">2020-04-17</time>
             </span>
 
           
@@ -226,22 +472,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="内联函数"><a href="#内联函数" class="headerlink" title="内联函数"></a>内联函数</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>在C语言中，如果一些函数被频繁调用，不断地有函数入栈，即<strong>函数栈</strong>，会造成栈空间或<strong>栈内存</strong>的大量消耗。</p>
-<p>为了解决这个问题，特别的引入了<strong>inline修饰符</strong>，表示为<strong>内联函数</strong>。</p>
-<h2 id="Sample-code"><a href="#Sample-code" class="headerlink" title="Sample code"></a>Sample code</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;  </span></span></span><br><span class="line"> </span><br><span class="line"><span class="comment">//函数定义为inline即:内联函数  </span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">char</span>* <span class="title">dbtest</span><span class="params">(<span class="keyword">int</span> a)</span> </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">	<span class="keyword">return</span> (i % <span class="number">2</span> &gt; <span class="number">0</span>) ? <span class="string">"奇"</span> : <span class="string">"偶"</span>;  </span><br><span class="line">&#125;   </span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>;  </span><br><span class="line">	<span class="keyword">for</span> (i=<span class="number">1</span>; i &lt; <span class="number">100</span>; i++) </span><br><span class="line">	&#123;  </span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"i:%d    奇偶性:%s /n"</span>, i, dbtest(i));      </span><br><span class="line">	&#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的例子就是标准的内联函数的用法，使用inline修饰带来的好处我们表面看不出来，其实在内部的工作就是在每个for循环的内部任何调用dbtest(i)的地方都换成了<code>(i%2&gt;0)?&quot;奇&quot;:&quot;偶&quot;</code>这样就避免了频繁调用函数对栈内存重复开辟所带来的消耗。</p>
-<h2 id="权衡是否需要内联函数"><a href="#权衡是否需要内联函数" class="headerlink" title="权衡是否需要内联函数"></a>权衡是否需要内联函数</h2><p>但是这其中要有个权衡，如果内联函数较为庞大的话，每次的调用都需要将内联函数中的代码完全copy一份到调用位置，我们将此开销定义为$Cost_1$</p>
-<p>而我们将函数调用的使用函数栈的开销定义为$Cost_2$</p>
-<p>只有当$Cost_1 &lt; Cost_2$时，使用内联函数才有意义。</p>
-<h2 id="内联函数的编程风格"><a href="#内联函数的编程风格" class="headerlink" title="内联函数的编程风格"></a>内联函数的编程风格</h2><p>如下风格的函数Foo 不能成为内联函数：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Foo</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>; <span class="comment">// inline 仅与函数声明放在一起</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Foo</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>而如下风格的函数Foo 则成为内联函数：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Foo</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">void</span> <span class="title">Foo</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> <span class="comment">// inline 与函数定义体放在一起</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>inline</code>是 <strong>用于实现的关键字</strong></p>
-
+          <p>C语言内联函数介绍</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/17/HI3559V200-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E8%A1%A5%E5%85%85-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -729,216 +968,6 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://solomon-ma.github.io/2020/02/29/tmux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/huima.jpg">
-      <meta itemprop="name" content="solomon-ma">
-      <meta itemprop="description" content="马慧">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Solomon-Ma">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/29/tmux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" class="post-title-link" itemprop="url">tmux常用指令</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-02-29 13:05:54 / 修改时间：13:32:18" itemprop="dateCreated datePublished" datetime="2020-02-29T13:05:54+08:00">2020-02-29</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>tmux常用的指令和鼠标配置</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/02/29/tmux%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-<div>
-  
-</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://solomon-ma.github.io/2020/02/29/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/huima.jpg">
-      <meta itemprop="name" content="solomon-ma">
-      <meta itemprop="description" content="马慧">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Solomon-Ma">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/29/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" class="post-title-link" itemprop="url">Nginx反向代理</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-02-29 12:30:57 / 修改时间：13:05:24" itemprop="dateCreated datePublished" datetime="2020-02-29T12:30:57+08:00">2020-02-29</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>端口没有开放怎么办？公网服务器不满足部署条件怎么办，换一台呀，换内网机器外网又不能访问怎么办？</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/02/29/Nginx%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-<div>
-  
-</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://solomon-ma.github.io/2020/02/27/nginx/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/huima.jpg">
-      <meta itemprop="name" content="solomon-ma">
-      <meta itemprop="description" content="马慧">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Solomon-Ma">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/02/27/nginx/" class="post-title-link" itemprop="url">nginx</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-02-27 23:14:58 / 修改时间：23:41:58" itemprop="dateCreated datePublished" datetime="2020-02-27T23:14:58+08:00">2020-02-27</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>nginx配置</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/02/27/nginx/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-<div>
-  
-</div>
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1011,7 +1040,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1025,10 +1054,10 @@
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/solomon-ma" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;solomon-ma" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+        <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL3NvbG9tb24tbWE=" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;solomon-ma"><i class="fa fa-fw fa-github"></i>GitHub</span>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:304219859@qq.com" title="E-Mail → mailto:304219859@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+        <span class="exturl" data-url="bWFpbHRvOjMwNDIxOTg1OUBxcS5jb20=" title="E-Mail → mailto:304219859@qq.com"><i class="fa fa-fw fa-envelope"></i>E-Mail</span>
       </span>
   </div>
 
@@ -1071,10 +1100,10 @@
   </span>
   <span class="author" itemprop="copyrightHolder">solomon-ma</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v4.2.0
+  <div class="powered-by">由 <span class="exturl theme-link" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> 强力驱动 v4.2.0
   </div>
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.1
+  <div class="theme-info">主题 – <span class="exturl theme-link" data-url="aHR0cHM6Ly90aGVtZS1uZXh0Lm9yZw==">NexT.Gemini</span> v7.7.1
   </div>
 
         
