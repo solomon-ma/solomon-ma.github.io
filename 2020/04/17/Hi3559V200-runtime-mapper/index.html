@@ -40,8 +40,9 @@
 <meta property="og:description" content="runtime mapper简要介绍及wk模型转换方法">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-17T09:26:58.000Z">
-<meta property="article:modified_time" content="2020-04-17T10:05:50.195Z">
+<meta property="article:modified_time" content="2020-04-17T10:07:24.880Z">
 <meta property="article:author" content="solomon-ma">
+<meta property="article:tag" content="海思">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://solomon-ma.github.io/2020/04/17/Hi3559V200-runtime-mapper/">
@@ -225,7 +226,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-04-17 17:26:58 / 修改时间：18:05:50" itemprop="dateCreated datePublished" datetime="2020-04-17T17:26:58+08:00">2020-04-17</time>
+              <time title="创建时间：2020-04-17 17:26:58 / 修改时间：18:07:24" itemprop="dateCreated datePublished" datetime="2020-04-17T17:26:58+08:00">2020-04-17</time>
             </span>
 
           
@@ -246,7 +247,7 @@
     <label for="hbePass">Hey, password is required here.</label>
     <div class="bottom-line"></div>
   </div>
-  <script id="hbeData" type="hbeData" data-hmacdigest="a9d5b1935aebcbe3695fc89f2cce812b793552ea1ed5c97a291d914c30c6b74d">5d6ced19660003280fc9ce7167486eef7600811971b123f486fed73e804305b32ae84f23cb30771e77d76c29134382104da65256cf470073a7f3b47d95b6b1d7ef4519e0c2bf58b9f63e55a1470f44b8badbc26800838a82dd08cd617306a86720de234bfd39bdedd1aba116e6fbd0c608729002d17b8774571b3f09535420ad704dd08efc845709bf555accf8344c1f3bc1f9b7b006a90b41eaed9453bb17a758dfedab5a4f3c4c68b600736047b366b497126a6e32ea14f7047c2d306f299cfde9a0d1e1836f22920d830935cadd4a70f3857508ecca1a7f45ac0903d9d0b0de17951e20d246fa98ac70371e06bb98dcb9be54c41a59065aa905e425fcfbfe6299625335f0d81119f3295d38c4b28d0f4c70c723813f3ce10e075e2c91e4501d106b2696323daac5643cd9ac0d3bb501acfe8b66bd604bed0ec545fc005339d49f8f0638e14827f52f2478fa1c2bae2d5a5dfbeb6a02334812e9e2a01a4974abd01b077b3c11a129aa15a6e331dcccc61a584754ad357d27f304c53ede1c19e5b98550f951868e1ec7569eae0b5103ec53177f1d9620afa7901ea7325a5b020fc39b85185e1775aeded3ef030da6d0b48b49b3be73e217940661ce51d9634e4d202d4cf5a710587923778ea564b4ab9bc212ceda9432aa333273be6c293e545dcd48718116422019184560cca402393be78cadd0349ff76f2febb88464cf445b6da3a77c7e1c2129cfa6940bd6e503da26fdd059190c5f955320bfc07e9ffc20255f87cb7cbf54eef079167a42310f48b2a2abb751c0357cdd4e9a985c7c311a641a0afc16edec3809ad04b7c91d68</script>
+  <script id="hbeData" type="hbeData" data-hmacdigest="c6cec4b2a10ab07c469d740882995c9e9c1e0c474f0d03a42311797a65896e67">c37170fb79f336757a7f54cad8505a63dd7a9f7dea84cbefc0203bc025a7796ddfd12c48d647e4783ea63754bc6e01f1cb8dca54f01d8c1fa4a254383aefe2e6e94391739e772d12f170df101a2e30135c4fd6051afae3384a76dd98d765efa80d745a2c85b57e40a9d7f698edd298f92cb7ea3602890153adf564f92e303f73b637f8af1322cb9be228bb84a75a5e777753e9ed3d085eafe600f4ad161f94ef3d4957be94b06364b000ce7c84a472338d1c11bceeb97406365ad7c245324f9c3173fbcf1b7a222b94e5e91127602eba3049b8c490ca6f982bb98e276403eaab3515c5567ddd1609489b50ea34c6a19fdbf75417f056d49812b8dbb4c5bd2bd180f138e712611e9b54b51c60050021ba3b8ada83b9c674cd3c9e91d16dd47455c170c55b32289b0a2952d71d3c9d7c9f53a160d5096d54d682896e7743d0bb644839eb7d232fd79a8321e8c2fef4e3810a2396bb6ea2e099e17d5ef10b2a7b87310fd6215e35cece632ef2a1105db8a8a3e7bf47cb48d12e69003f9d5bd1ebe478a6b83128a25885e388eb3e2cc9c514858e6309379860c6274054b857ab8a15d20251dbf84c231749c22403e47b0f677f72e6649ba845b481681f1985aab691fc34baf3a374aedac72d12376cb6dd979408195d553e81cbd561ce115d2af7a428c0c948aeac579f59b2298db3705f45491319ad473ab76dd77114334494bac0c3d078a77454d834e69b66b7ae7709f30573272629b08cac96df79910246d8ea3323feea38572d91348f7ff7b89bc53d27a010ddbdf9dc2881e156ca37be9a94db1afca7a9b873b19e4b5217854ca88a</script>
 </div>
 <script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">
     </div>
@@ -267,6 +268,9 @@
 </div>
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B5%B7%E6%80%9D/" rel="tag"># 海思</a>
+          </div>
 
         
   <div class="post-widgets">
@@ -282,7 +286,10 @@
     <a href="/2020/04/17/Hi3559V200-%E5%9F%BA%E7%A1%80%E5%8F%AA%E6%98%AF%E8%A1%A5%E5%85%85-Make/" rel="prev" title="Hi3559V200-基础知识补充(Make)">
       <i class="fa fa-chevron-left"></i> Hi3559V200-基础知识补充(Make)
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/17/Hi3559%E5%AA%92%E4%BD%93%E6%B5%813%E7%A7%8D%E6%A0%BC%E5%BC%8F%E8%BD%AC%E6%8D%A2/" rel="next" title="Hi3559媒体流3种格式转换">
+      Hi3559媒体流3种格式转换 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -357,7 +364,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -389,7 +396,7 @@
     <h3 class="widget-title">Tag Cloud</h3>
     <div id="myCanvasContainer" class="widget tagcloud">
         <canvas width="250" height="250" id="resCanvas" style="width=100%">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/" rel="tag">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MNN/" rel="tag">MNN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/" rel="tag">flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubernetes/" rel="tag">kubernetes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tmux/" rel="tag">tmux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%B7%E6%80%9D/" rel="tag">海思</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%BD%91%E7%BB%9C/" rel="tag">移动端网络</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flask/" rel="tag">Flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MNN/" rel="tag">MNN</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nginx/" rel="tag">Nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flask/" rel="tag">flask</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kubernetes/" rel="tag">kubernetes</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/" rel="tag">network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/nginx/" rel="tag">nginx</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tmux/" rel="tag">tmux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vscode/" rel="tag">vscode</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B5%B7%E6%80%9D/" rel="tag">海思</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%BD%91%E7%BB%9C/" rel="tag">移动端网络</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BD%91%E7%BB%9C/" rel="tag">网络</a><span class="tag-list-count">1</span></li></ul>
         </canvas>
     </div>
 </div>
