@@ -1,6 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>NNIE与gdc冲突问题解决方案</title>
+    <url>/2020/04/26/NNIE%E4%B8%8Egdc%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="fbe43cd147e4762301c9c51572bfcce0fc37e769daed0754b6684e646821455b">a032c8c917a77f57e1970d974fe9d386614863291de062f58ba2b0ded1326bfd13b7b66c7ab449ca7154f5e1ff62c130e7171e112e0c106571eb31a29da87c374c82371fd8ea90a73541c9df23ca788a93a308e740695db30aa14fb1f5070a1141ed7ca0452cfae06f625fab18cda0e20075b4758da4b5be2de5fc684cdf5762354f61ca31afe103544dc1538d7c404db430f59ab851154203d1e3e07aa52f64f9ff338ebb884b84e8fc9818385ca8e6115c79d0048b92d717090212fe647136a9b06038c8249242667a0c6c1ddce1851b35395d1f6d713cdec86ec0f7d66c5c603eaf41938579d4180a53c7637edd4da0ef55c3f591c973495c325f53523f6a6638e60d3509a7babe01dfe75b3f40d8a96eb42d26ae7039e078c18159be16c3b890dd1db149068a50792ab89aafadc8b9e6342dd6a716f8c43530163dd8c3c3ae66f0237f758212d4ceef5235855fd9c8c880105ad1bd591098fa4cbe0ae29bbb643477c7f79481166296ea8d184c47fcccfa3ca21bd5ff5071d9266819640f298c5cea9f73ed08f00d2bfbb69ff7a65caf3d5c20aae7b0daa0ab7c0ec15e6132183b281a8233086a5253261bec02f33a6cea01772a390fda7109be5ba8945d724b655ddef5e18ae3a21f25d16c3169301fd52c4b3251c25a478defe74aa0232d96fb2f90736998c6fae6f45f07b6965c34536bc1491b4669d4f717e34086c695866de4d4656304d573290551bdc7f84560b2c86653c206051acc4e3898d9fe9b52f2011b364ffd64d38f492bdbc15461244470cde25def21550476ccf1ebedbe6b4e9cffc391465145ef474570b9fea9b28df03658f3389f8bf2e24179e1075c03df0897db93e1958d7d57ff10956f9e68e89ca0006f09b0aa69adadb88dcaf15f46d3920c3e5447a353ea114343bebe62f3d9f33a9303094b914006767f19ecfc6a52ba9da72d479f740138bd5bb448c5c7db377683298e14ca77a20fa5e41fd4d4681cd2f6a956ba7ec44cfd85437c1af607cacc6c3527fe0f8ea2a9557a47649efd6e0c61dc54f1d799535b6f661aa3740416ab3f1ee8db72848eede2628586d699cea732676ed4c438d4c403551eb7ce37dde4e7430f3b71398b1d910f6fccad3d765f955eb8c898432cee32a32b488f07d1c998efb4da76c2b961e53c90c15ddf01507cd798d8c112088d503fb28058de4cfc68092f2d7d56a756386550b7ff9e92735fb471a6f0fb4027a1badd24483468e634a1f100113be02e6c72bab0a2728749e9e724b058a429c8646f615cb30ed8e2b27f8dd327122be7dc11314226a90725b7584db7cfbeea3ba65ee64f059cc9903eeb38b3e608e6a5ae3f1a2a58b5ed6b050b0e9193df2e8d0379cabb83e0ede9b06ca658a0242f2df39bc0e897ae927459fe1426ca8d336671dc3ac24250c570f0f594db87743bdebbcbe73f20e0e0fc5bdcbfd9f02489526057f7cfa2fe7380dba025e4fcd3d5ac0222bae8ffe0bd2c5ba0aafe67407bf9d5d6ec82a5fe64fcd1ecaf91680a17145967741f653f2204b089cb71084bd335f83c63a5404472ef93a54d4bf83eed16fbecd164ced8c23edda5070e30e95fe0ab26c93fc46f1a370452c17f5b744a98780c4f7631dccabeaceda7efd626aadc4bc1e8fe3b31d02f5dd9613c0edd2b037a7e235a41ec451ef53e211af490a2f107de685771f01afdeedbfcf8760ab4b9ba3f68eba04e385e85aeaa3d64e8d05dcfd74a316612f8a6925dcbe7b55c124313f5ec1f37cd73dfe7210a02b959d8688815ad8697eb73345805a319296dae0c2e7cc7c74b8f71aa67143c631ffc0b2ab82779b5dbc6cfa6890e727b807c798f5f45c478069200ffa3b5cb4d8d3994ad12b58350999968c9c71cf599a02a99cc788dbb1d48bb5446cc44405c3d5550ba1b4f58a51c94163267cd7b838067f693714b1b235a69f9ea5a69413840701fa9f8550838dd4bed40f80df9834928f3212e7dfc99d370b06ff404fd7e0fb63903f132319a59b0d546190f4e5e1af4fbc27e019580bfa3137862f5a53529c1d7112cbf2a0234c79e317a86b7aa04336862f803d8a650f83d38e760ac3020994b5ab25302feec0649679f3e5367b6f307a3b351c3d2a62068efc56f67ba059c127f325f8af60d1ffb2e88267fbd1afdf81ce3234fd8f61a63ad1423176b02a2a982ccecf68917b6077b50f7333190284d306e3acb4d402ce05752132b2db5a1aa3f0a4b3854d3d6fb0387ff6a6a8fd0bdb725921ca5210d54596a827fcd40b73c0f38322677d65bccb7e02dcfa35272f1837898bd08dab8387237a12444d2816bdf92e8b1a82565d680d31ca79edda811b8cc890673b8d4c7abcf21d313dd511f91a6e0421075f96f64223ad830834775e6cdb68ae6e634500a55f5940180dfc2ac0f58416d49d1215cb122acd4885e747863389ae3c80c4d11b87a5b9e3dc24129ed43eda1af9a21cf0a18627a76f14bfd6a697f83cc2b1213c3dc530a86c6be5da4b2aceb05f1ea4de76dbb98e188c089a3fe9e3f54257d17fcebd746989f649d50a9457cc4e5dacf7ac955bda60127213eea5b2317ca90a1eeca46a4a155dddfbc6d4f98b2148975ac285d26ce986c1cf5ea9c1ad73da971ba98ec500dfcbecb39df07ceab8d026bb60cce6207c06da2e73c56667e25d48277718b493450d471d1f127d5294a9b246b4b81e85d7c207cbf78541068bd0125ce8ae64ee7f4c33c6236b1b3e767cf96270242c3b2719080c53d65eb16debbaae2604923782d59574748700e1539ba059fcd47d1b8e99839db17dee8faf30d7c10fd48dfbc7e4f50460c57eb09506a5c85d71d87ebb5209e693168b8c616e844a5a352f3765840cfb83a55113593cf37da371c1d46dc2d4949a3ceae19c0c06ea4425925e150679147c0</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>海思</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>yolo系列</title>
+    <url>/2020/04/21/yolo%E7%B3%BB%E5%88%97/</url>
+    <content><![CDATA[<h2 id="Yolo-V2"><a href="#Yolo-V2" class="headerlink" title="Yolo V2"></a>Yolo V2</h2><h3 id="先批一下yolo"><a href="#先批一下yolo" class="headerlink" title="先批一下yolo"></a>先批一下yolo</h3><ul>
+<li>相比于Fast R-CNN有明显的localization errors</li>
+<li>low recall</li>
+</ul>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><ul>
+<li><p>Batch Normalization：</p>
+<ul>
+<li>2% improvement in mAP</li>
+<li>improvements in convergence</li>
+</ul>
+</li>
+<li><p>High Resolution Classifier: </p>
+<ul>
+<li>from YOLO ($224 * 224$) to YOLOv2 ($448 * 448$)</li>
+<li>4% improvement in mAP</li>
+</ul>
+</li>
+<li><p>Convolutional with Anchor Boxes</p>
+<ul>
+<li>YOLO fully connected layers</li>
+<li>YOLOv2 using anchor boxes with convolutional layers</li>
+<li>Using RPN(Faster-RCNN) 预测anchor的offset和confidences，因为预测层都是卷积的，RPN可以在每个featuremap中仅<strong>预测offsets</strong>。对offset进行预测来替代预测坐标可以简化问题，使得模型更容易学习</li>
+<li>移除了一个pooling layer，使得模型的输出在较高的resolution</li>
+<li><strong>输入图片大小416</strong>，而不是用448。使用416的输入，和32倍的downsampling，最终得到的输出为$13 * 13$ ，我们想要的是个奇数，这样可以是的object的center落在一个特定的像素上。如果输出的feature map为偶数，则object的中心会落在四个像素的中央，而模型又不会输出半像素坐标，就会带来较高误差。</li>
+<li>YOLO 98 boxes per image， yolov2 with achor 1000+</li>
+<li>Without anchor: 69.5 mAP 81% recall</li>
+<li>with anchor: 69.2 mAP 88% recall</li>
+</ul>
+</li>
+<li><p>Dimension Clusters</p>
+<ul>
+<li>two issues with anchor boxes when using them with YOLO<ul>
+<li>network learn to adjust the boxes appropriately (better priors to start, easier to learn to predict good detections) –&gt; k-means</li>
+<li>好的priors 往往拥有好的IOU scores。</li>
+<li>$d(box,centroid) = 1 - IOU(box, centroid)$</li>
+<li>这样的选择很可能会略去相对此5个anchor以外的good prior</li>
+<li>more anchor boxes, better result</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Direct location prediction</p>
+<ul>
+<li>second issue: model instability, 特别是在模型训练的初期。</li>
+</ul>
+<p>$b_x = \sigma(t_x) + c_x$</p>
+<p>$b_y = \sigma(t_y) + c_y$</p>
+<p>$b_w = p_we^{t_w}$</p>
+<p>$b_h = p_he^{t_h}$</p>
+<p>$Pr(object) * IOU(b,object) = \sigma(t_o)$</p>
+</li>
+</ul>
+<ul>
+<li><p>fine-grained features</p>
+<ul>
+<li>faster-RCNN &amp; SSD： various feature maps to get a range of resolutions</li>
+<li>YOLO v2: passthrough layer (similar to ResNet)</li>
+<li>$26 * 26 * 512 ==&gt; 13 * 13 * 2048$</li>
+</ul>
+</li>
+<li><p>multi-scale training</p>
+<ul>
+<li>Only use convolutional and pooling layers</li>
+<li>every 10 batches, randomly chooses a new image dimension size, multiples of 32 : {320,352,…, 608}</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>detection模型</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>windows 10 ssh bug</title>
+    <url>/2020/04/20/windows-10-ssh-bug/</url>
+    <content><![CDATA[<p>指定ssh proxycommand中的ssh的绝对路径</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Host foo</span><br><span class="line">  User &lt;username&gt;</span><br><span class="line">  HostName &lt;ip_address&gt;</span><br><span class="line">  Port 22</span><br><span class="line">  Proxycommand C:\Windows\System32\OpenSSH\ssh.exe -p 10099 &lt;username&gt;@ip nc %h %p</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hi3559SVPRT bug处理方式</title>
+    <url>/2020/04/17/Hi3559SSVPRT-bug%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="SVPRT-常见bug排坑指南"><a href="#SVPRT-常见bug排坑指南" class="headerlink" title="SVPRT 常见bug排坑指南"></a>SVPRT 常见bug排坑指南</h1>]]></content>
+      <tags>
+        <tag>海思</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hi3559S VIDEODETECT框架介绍</title>
+    <url>/2020/04/17/Hi3559S-VIDEODETECT%E6%A1%86%E6%9E%B6%E4%BB%8B%E7%BB%8D/</url>
+    <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <div class="hbe-input-container">
+  <input type="password" id="hbePass" placeholder="" />
+    <label for="hbePass">Hey, password is required here.</label>
+    <div class="bottom-line"></div>
+  </div>
+  <script id="hbeData" type="hbeData" data-hmacdigest="2dc653ee8cce2405173b858fa3fd81c3b836432853669b4387afef38c5718dfa">dff5f420af68c88614c2c6cd43cd7d9861add8dce18eb71099fdd9ef857a586ef2a5c3b90917acdd984cf26e751b70689853fe540c27101567d8b04e0e22604add686302d4674411a7b9343811aba741b9901f7461e2c6c0d46d3d59dbdf56190c9a6050a845641e36f5afea9d2d70480ac112a9d41ee706ead6dc63c181d46c069128ba773ee603f7bc2754d08e42f17902cadb63f11653056a74ed5a69899901698cf9fb654bce45a6280ba3861e22b40aaaeed8f8fa4543b2dbe1d2fb71e0e14d43c7502429c1fd22f3aa9ea7ad16eb52ebc8b45dd2b85579c1b9e66b2e7579c01288a5c4c7bac9fd1e7b001a06fe8ce3039f9e03441ed19fc70bc8be29799fd8483ac3430b1c1cea88b6976fc9447fdbb648d37764e1bc187b3653d503ba4437511aa646379b024e0f879010bdf61273930815cbb6bfbcee93c9e080835d95fca5be782a332546c0a37f7669fe83fdf3dca48749d8b385e9af7dbe3e6d7c06e2422808c25cd6dfa8f9c459224ab0225049671a2222875084fd491010614ec68e904c7303c919cbb006fb9e77611b2786d6b37eced73997e1b1e9fb15c0e8255a3f2bc43de20c683d6fb20f3263bea229bb731e357c9231294365161b23ab95640c7fd984e5d45b634af43ff92a66bce41eefd32e7468195ef4ce43a77526a6142164ec4c32decf9f69093086d60b085096b84ee41cd323bcf54bf357b7e6ccad59d2d4b6e7e6c8da6010c6b1d58ac0b609a8de81d213d877f3d22cf7a9553549d4fa45c41fd33770f4d15322a7e54a80d36d6b6e5472a766e5aa28333d12830098de1101378848e2a49334f163cea90f3da3fa1677164d936895a5df77b45e9aad7c839043348299f2247d9f7b990a31eed3c0f5e4981df1bb2b2c8c294e0fda8d9d67db424e9ebd15062d6ea19049788024a53378a9e8fd8534a779b7c6e01faf4c2a271ba4030b3e2134ca4f1aa56bf7731228f61d2457ccf297f4849c295c160dd2c28a06b2a5408c69c7aa3668e414c6acf7d898b93007ed10b65349aee9d5f7adeb2af67a90e2d7d3c45db8af10908a5a75e993417b22aad1e3a55701f9e51101305338ebdf070194a7ec970b8f6375bd36555c1b2636f0eecefc1edab436e0179e6f9149a4990804799a73a33ae0d9264710e86586a269334537abcd717cfd5c25d517b24d186b2e227db5c4f14bf476843cd472ae4a4d783da166</script>
+</div>
+<script src="/lib/blog-encrypt.js"></script><link href="/css/blog-encrypt.css" rel="stylesheet" type="text/css">]]></content>
+      <tags>
+        <tag>海思</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hi3559SVPRT排坑指南</title>
     <url>/2020/04/17/Hi3559SVPRT%E6%8E%92%E5%9D%91%E6%8C%87%E5%8D%97/</url>
     <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
