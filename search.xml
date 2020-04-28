@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ssh端口转发</title>
+    <url>/2020/04/28/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</url>
+    <content><![CDATA[<p>通过ssh的端口转发访问work服务器上的6006端口</p>
+<p>在work服务器上6006端口启动了tensorboard服务，将work服务器的6006端口转发到了本地localhost的16006端口上。</p>
+<p><code>ssh work -L 16006:localhost:6006</code></p>
+<p>使用上述命令之后即可在本地浏览器上访问<code>localhost:16006</code>即可访问到work服务器的6006的tensorboard</p>
+]]></content>
+      <tags>
+        <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>NNIE与gdc冲突问题解决方案</title>
     <url>/2020/04/26/NNIE%E4%B8%8Egdc%E5%86%B2%E7%AA%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
     <content><![CDATA[<div id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
