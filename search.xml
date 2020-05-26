@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>open-mmlab 编译问题</title>
+    <url>/2020/05/26/open-mmlab-%E7%BC%96%E8%AF%91%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<ol>
+<li>先在当前的conda环境中安装git后</li>
+</ol>
+<p><code>conda install git</code></p>
+<ol start="2">
+<li>然后再去执行open-mmlab提供的以下安装cocoAPI的命令即可</li>
+</ol>
+<p><code>pip install &quot;git+https://github.com/cocodataset/cocoapi.git#subdirectory=PythonAPI&quot;</code></p>
+]]></content>
+      <tags>
+        <tag>DL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ssh端口转发</title>
     <url>/2020/04/28/ssh%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</url>
     <content><![CDATA[<p>通过ssh的端口转发访问work服务器上的6006端口</p>
@@ -31,7 +47,49 @@
   <entry>
     <title>yolo系列</title>
     <url>/2020/04/21/yolo%E7%B3%BB%E5%88%97/</url>
-    <content><![CDATA[<h2 id="Yolo-V2"><a href="#Yolo-V2" class="headerlink" title="Yolo V2"></a>Yolo V2</h2><h3 id="先批一下yolo"><a href="#先批一下yolo" class="headerlink" title="先批一下yolo"></a>先批一下yolo</h3><ul>
+    <content><![CDATA[<h1 id="YOLO"><a href="#YOLO" class="headerlink" title="YOLO"></a>YOLO</h1><ul>
+<li>将输入的图片分为$S * S$个grid。如果有一个object落在这个grid cell中，这个grid cell就耀负责检测该物体</li>
+<li>每个grid cell用来预测B个bounding boxes和cofidence score<ul>
+<li>confidence score：$Pr(object) * IOU_{pred}^{truth}$</li>
+<li>如果没有物体落在这个cell中，则confidence score为0</li>
+</ul>
+</li>
+<li>每一个bounding box包括$(x,y,w,h,confidence)$<ul>
+<li>$(x,y)$ 代表相对于grid cell边界的box的中心点</li>
+<li>$(w,h)$ 代表相对于原图像的预测值</li>
+</ul>
+</li>
+<li>每一个grid cell还要用来预测属于某个类别的概率$Pr(Class_i|Object)$。由于此概率是个条件概率，因此如果某个grid cell没有object，我们则没有必要再来计算此条件概率。</li>
+<li>在测试时，$Pr(Class_i|Object) * Pr(Object)*IOU_{pred}^{truth} = Pr(Class_i) * IOU_{pred}^{truth}$</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1getf7ubfeij30w80u01kx.jpg" alt="image-20200515204416042"></p>
+<p><strong>为什么此处必须要分成奇数个grid？</strong></p>
+<h2 id="Training"><a href="#Training" class="headerlink" title="Training"></a>Training</h2><ul>
+<li>在ImageNet上进行预训练</li>
+<li>在model之后加了4个卷积层和2个全联接层 with 随机初始化权值</li>
+<li>输入图片的分辨率从$224 \times 224$ to $448 \times 448$</li>
+<li>最后一层用来预测class probabilities和bounding box坐标</li>
+<li>用原图的w,h来归一化bounding box的w,h 使其落在[0,1]</li>
+<li>最后一层使用线性激活函数，其他层使用leaky ReLu</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1getfyluh1xj30z60moq5j.jpg" alt="image-20200515211002531"></p>
+<ul>
+<li>使用了平方和误差函数，其易于优化，但是它并不能够完美的拟合我们需要最大化平均精度的要求。原始的平方和误差函数同等的weight了位置信息和分类信息，这并不是一个好的idea。存在一些grid cell，可能并不包含任何object，此时如何再用同等weight，就不太好。这种情况往往还比较多，这将导致模型的不稳定。</li>
+<li>为了修正上述问题，添加了$\lambda_{coord}$和$\lambda_{noobj}$。在此设置了$\lambda_{coord} = 5$，$\lambda_{noobj} = 0.5$，这样就强化了bounding box的坐标预测，而弱化了分类的confidence预测。</li>
+<li>注意到在w,h的预测时，使用到了平方根。是因为平方和的误差同等的对待了large bbox和small bbox。这也会导致模型训练时的不稳定性。为了解决这个问题，使用了平方根，可以使得值范围空间的压缩，达到一定的稳定。</li>
+<li>YOLO针对每一个grid cell会预测多个bbox，但是在训练过程中我们仅希望每一个bbox的预测器来预测一个物体。我们使得每一个predictor预测那个有最高IOU的bbox。</li>
+</ul>
+<h2 id="Inference"><a href="#Inference" class="headerlink" title="Inference"></a>Inference</h2><ul>
+<li>grid的设计是的在bbox的预测时存在空间上的稀疏。</li>
+<li>存在一些较大的物体或是有些中心点落在多个grid cell边界上的物体</li>
+<li>NMS可以用来处理上述问题，并且还获得了2-3个点的mAP的提升。</li>
+</ul>
+<h2 id="Limitations"><a href="#Limitations" class="headerlink" title="Limitations"></a>Limitations</h2><ul>
+<li>每一个grid cell仅能预测两个bbox和一个class</li>
+<li>空间密度限制了模型可预测的物体数量</li>
+<li>对小物体性能不好</li>
+</ul>
+<h2 id="Yolo-V2"><a href="#Yolo-V2" class="headerlink" title="Yolo V2"></a>Yolo V2</h2><h3 id="先批一下yolo"><a href="#先批一下yolo" class="headerlink" title="先批一下yolo"></a>先批一下yolo</h3><ul>
 <li>相比于Fast R-CNN有明显的localization errors</li>
 <li>low recall</li>
 </ul>
@@ -60,9 +118,9 @@
 <li>with anchor: 69.2 mAP 88% recall</li>
 </ul>
 </li>
-<li><p>Dimension Clusters</p>
-<ul>
-<li>two issues with anchor boxes when using them with YOLO<ul>
+</ul>
+<h3 id="使用anchor-boxes的两个问题"><a href="#使用anchor-boxes的两个问题" class="headerlink" title="使用anchor boxes的两个问题"></a>使用anchor boxes的两个问题</h3><h4 id="Dimension-Clusters"><a href="#Dimension-Clusters" class="headerlink" title="Dimension Clusters"></a>Dimension Clusters</h4><ul>
+<li>box dimensions are hand picked<ul>
 <li>network learn to adjust the boxes appropriately (better priors to start, easier to learn to predict good detections) –&gt; k-means</li>
 <li>好的priors 往往拥有好的IOU scores。</li>
 <li>$d(box,centroid) = 1 - IOU(box, centroid)$</li>
@@ -71,9 +129,7 @@
 </ul>
 </li>
 </ul>
-</li>
-<li><p>Direct location prediction</p>
-<ul>
+<h4 id="Direct-location-prediction"><a href="#Direct-location-prediction" class="headerlink" title="Direct location prediction"></a>Direct location prediction</h4><ul>
 <li>second issue: model instability, 特别是在模型训练的初期。</li>
 </ul>
 <p>$b_x = \sigma(t_x) + c_x$</p>
@@ -81,8 +137,6 @@
 <p>$b_w = p_we^{t_w}$</p>
 <p>$b_h = p_he^{t_h}$</p>
 <p>$Pr(object) * IOU(b,object) = \sigma(t_o)$</p>
-</li>
-</ul>
 <ul>
 <li><p>fine-grained features</p>
 <ul>
@@ -97,6 +151,72 @@
 <li>every 10 batches, randomly chooses a new image dimension size, multiples of 32 : {320,352,…, 608}</li>
 </ul>
 </li>
+</ul>
+<h1 id="Yolov3"><a href="#Yolov3" class="headerlink" title="Yolov3"></a>Yolov3</h1><h3 id="Bounding-Box-Prediction"><a href="#Bounding-Box-Prediction" class="headerlink" title="Bounding Box Prediction"></a>Bounding Box Prediction</h3><p>  <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gexvj25m48j30hs0heq4t.jpg" alt="image-20200519171051871"></p>
+<ul>
+<li>$sigmoid(t_x) = \sigma(t_x)$ 代表中心点相对于其所在grid_cell的offset</li>
+<li>$sigmoid(t_y) = \sigma(t_y)$ 代表中心点相对于其所在grid_cell的offset</li>
+<li>$c_x$ 中心点所在cell的左上角x坐标相对于feature_map的左上顶点的offset</li>
+<li>$c_y$中心点所在cell的左上角y坐标相对于feature_map的左上顶点的offset</li>
+<li>$p_w$：bbox宽度的预置值，理解为anchor的宽度</li>
+<li>$p_h$：bbox高度的预置值，理解为anchor的高度</li>
+</ul>
+<h1 id="Yolov4"><a href="#Yolov4" class="headerlink" title="Yolov4"></a>Yolov4</h1><h3 id="object-detection-models"><a href="#object-detection-models" class="headerlink" title="object detection models"></a>object detection models</h3><p>  目标检测器通常包括两个部分，一个在ImageNet上预训练过的backbone，和一个用来预测分类和bbox的目标检测head。</p>
+<ul>
+<li>GPU端backbone：VGG, ResNet, ResNeXt, DenseNet</li>
+<li>CPU端backbone: SqueezeNet, MobileNet, ShuffleNet</li>
+</ul>
+<p>  head部分通常分类两个种类</p>
+<ul>
+<li>one-stage : YOLO, SSD, RetinaNet, CenterNet, CornerNet, FCOS</li>
+<li>two-stage: R-CNN(fast R-CNN, faster R-CNN, R-FCN, Libra R-CNN), RepPoints(anchor-free)</li>
+</ul>
+<p>  neck部分：加载backbone和head之间用来提升特征抽取能力。</p>
+<ul>
+<li>FPN, PAN, BiFPN, NAS_FPN</li>
+</ul>
+<p>new backbone : DetNet, DetNAS, SpineNet, HitDetector</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gewosk9y7wj30u011igug.jpg" alt="image-20200518163215239"></p>
+<h2 id="Bag-of-freebies"><a href="#Bag-of-freebies" class="headerlink" title="Bag of freebies"></a>Bag of freebies</h2><p>这类方法可以在不增加inference的代价的情况下提高模型的性能。</p>
+<ul>
+<li>data Augmentation<ul>
+<li>Pixel-wise adjustments<ul>
+<li>photometric distortions : brightness, constrast, hue, saturation, noise</li>
+<li>Geometric distortions: random scale, crop, flip, rotate</li>
+</ul>
+</li>
+<li>occlusion<ul>
+<li>Random erase</li>
+<li>Cutout</li>
+<li>Hide-and-seek</li>
+<li>Grid mask</li>
+</ul>
+</li>
+<li>use multiple images together<ul>
+<li>MixUp</li>
+<li>CutMix</li>
+</ul>
+</li>
+<li>GAN : style transfer GAN</li>
+</ul>
+</li>
+<li>Solve semantic distribution in the dataset <ul>
+<li>for two-stage detector<ul>
+<li>negative example mining</li>
+<li>online hard example mining </li>
+</ul>
+</li>
+<li>For one-stage detctor<ul>
+<li>Focal loss (data imbalance existing between various classes)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>在使用one-hot label时难以表达类间关系<ul>
+<li>label smoothing</li>
+</ul>
+</li>
+<li><h2 id="objective-function-of-bbox-regression-IOU-loss"><a href="#objective-function-of-bbox-regression-IOU-loss" class="headerlink" title="objective function of bbox regression (IOU loss)"></a>objective function of bbox regression (IOU loss)</h2></li>
 </ul>
 ]]></content>
       <tags>
@@ -297,7 +417,7 @@
 <p>$P(“the”,”man”,”his”,”son”| “loves”)$</p>
 <h3 id="3-连续词袋模型"><a href="#3-连续词袋模型" class="headerlink" title="3. 连续词袋模型"></a>3. 连续词袋模型</h3><p>连续词袋模型假设<strong>基于</strong>某中心词在文本序列前后的<strong>背景词</strong>来<strong>生成</strong>该<strong>中心词</strong></p>
 <p>$P(“loves” | “the”,”man”,”his”,”son”)$</p>
-<h2 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h2><p><a href="https://www.zybuluo.com/Dounm/note/591752" target="_blank" rel="noopener">https://www.zybuluo.com/Dounm/note/591752</a></p>
+<h2 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h2><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuenlidWx1by5jb20vRG91bm0vbm90ZS81OTE3NTI=" title="https://www.zybuluo.com/Dounm/note/591752">https://www.zybuluo.com/Dounm/note/591752<i class="fa fa-external-link"></i></span></p>
 ]]></content>
   </entry>
   <entry>
@@ -423,7 +543,7 @@
 
 
 
-<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><p><a href="https://github.com/marvis/pytorch-mobilenet/blob/master/main.py" target="_blank" rel="noopener">https://github.com/marvis/pytorch-mobilenet/blob/master/main.py</a></p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><p><span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL21hcnZpcy9weXRvcmNoLW1vYmlsZW5ldC9ibG9iL21hc3Rlci9tYWluLnB5" title="https://github.com/marvis/pytorch-mobilenet/blob/master/main.py">https://github.com/marvis/pytorch-mobilenet/blob/master/main.py<i class="fa fa-external-link"></i></span></p>
 ]]></content>
       <tags>
         <tag>移动端网络</tag>
@@ -493,7 +613,7 @@
 <td>关闭当前面板</td>
 </tr>
 </tbody></table>
-<h4 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h4><p><a href="https://louiszhai.github.io/2017/09/30/tmux/?nsukey=sMp5CqCQZvJyCawq0vUlqLccV8n9jr%2F25yS59%2BxxsaeSmLxg31b2x7pHehI5%2BGCKykJGT%2BBSdzOcGFTlP678aaTylpwL3KOPgGiOD6YDSPUdUkQG3u8w5%2BjepXpC71M%2FHBtoESqckA7w13qg%2BFvpytSyKxEhkr%2Fwy7zemKxCumL63R4K8G97j1v7yTlETGzzBH0lx94TYd8vQClPzpGbxw%3D%3D#新建会话" target="_blank" rel="noopener">https://louiszhai.github.io/2017/09/30/tmux/?nsukey=sMp5CqCQZvJyCawq0vUlqLccV8n9jr%2F25yS59%2BxxsaeSmLxg31b2x7pHehI5%2BGCKykJGT%2BBSdzOcGFTlP678aaTylpwL3KOPgGiOD6YDSPUdUkQG3u8w5%2BjepXpC71M%2FHBtoESqckA7w13qg%2BFvpytSyKxEhkr%2Fwy7zemKxCumL63R4K8G97j1v7yTlETGzzBH0lx94TYd8vQClPzpGbxw%3D%3D#%E6%96%B0%E5%BB%BA%E4%BC%9A%E8%AF%9D</a></p>
+<h4 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h4><p><span class="exturl" data-url="aHR0cHM6Ly9sb3Vpc3poYWkuZ2l0aHViLmlvLzIwMTcvMDkvMzAvdG11eC8/bnN1a2V5PXNNcDVDcUNRWnZKeUNhd3EwdlVscUxjY1Y4bjlqciUyRjI1eVM1OSUyQnh4c2FlU21MeGczMWIyeDdwSGVoSTUlMkJHQ0t5a0pHVCUyQkJTZHpPY0dGVGxQNjc4YWFUeWxwd0wzS09QZ0dpT0Q2WURTUFVkVWtRRzN1OHc1JTJCamVwWHBDNzFNJTJGSEJ0b0VTcWNrQTd3MTNxZyUyQkZ2cHl0U3lLeEVoa3IlMkZ3eTd6ZW1LeEN1bUw2M1I0SzhHOTdqMXY3eVRsRVRHenpCSDBseDk0VFlkOHZRQ2xQenBHYnh3JTNEJTNEI+aWsOW7uuS8muivnQ==" title="https://louiszhai.github.io/2017/09/30/tmux/?nsukey=sMp5CqCQZvJyCawq0vUlqLccV8n9jr%2F25yS59%2BxxsaeSmLxg31b2x7pHehI5%2BGCKykJGT%2BBSdzOcGFTlP678aaTylpwL3KOPgGiOD6YDSPUdUkQG3u8w5%2BjepXpC71M%2FHBtoESqckA7w13qg%2BFvpytSyKxEhkr%2Fwy7zemKxCumL63R4K8G97j1v7yTlETGzzBH0lx94TYd8vQClPzpGbxw%3D%3D#新建会话">https://louiszhai.github.io/2017/09/30/tmux/?nsukey=sMp5CqCQZvJyCawq0vUlqLccV8n9jr%2F25yS59%2BxxsaeSmLxg31b2x7pHehI5%2BGCKykJGT%2BBSdzOcGFTlP678aaTylpwL3KOPgGiOD6YDSPUdUkQG3u8w5%2BjepXpC71M%2FHBtoESqckA7w13qg%2BFvpytSyKxEhkr%2Fwy7zemKxCumL63R4K8G97j1v7yTlETGzzBH0lx94TYd8vQClPzpGbxw%3D%3D#%E6%96%B0%E5%BB%BA%E4%BC%9A%E8%AF%9D<i class="fa fa-external-link"></i></span></p>
 ]]></content>
       <tags>
         <tag>tmux</tag>
@@ -535,9 +655,9 @@
 <p>此处外网访问的是server模块下listen设置的80端口。</p>
 <p>而服务转移到了upstream ggzy模块下的127.0.0.1:1399;</p>
 <p>此处是转移到了本机的1399端口，当然也可以将ip地址设置到该服务器可以访问到的其他服务器。</p>
-<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><p><a href="https://www.jianshu.com/p/208c02c9dd1d" target="_blank" rel="noopener">https://www.jianshu.com/p/208c02c9dd1d</a></p>
-<p><a href="https://juejin.im/post/5aa7704c6fb9a028bb18a993" target="_blank" rel="noopener">https://juejin.im/post/5aa7704c6fb9a028bb18a993</a></p>
-<p><a href="https://www.runoob.com/w3cnote/nginx-setup-intro.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/nginx-setup-intro.html</a></p>
+<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h4><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC8yMDhjMDJjOWRkMWQ=" title="https://www.jianshu.com/p/208c02c9dd1d">https://www.jianshu.com/p/208c02c9dd1d<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly9qdWVqaW4uaW0vcG9zdC81YWE3NzA0YzZmYjlhMDI4YmIxOGE5OTM=" title="https://juejin.im/post/5aa7704c6fb9a028bb18a993">https://juejin.im/post/5aa7704c6fb9a028bb18a993<i class="fa fa-external-link"></i></span></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS93M2Nub3RlL25naW54LXNldHVwLWludHJvLmh0bWw=" title="https://www.runoob.com/w3cnote/nginx-setup-intro.html">https://www.runoob.com/w3cnote/nginx-setup-intro.html<i class="fa fa-external-link"></i></span></p>
 ]]></content>
       <tags>
         <tag>Nginx</tag>
@@ -577,7 +697,7 @@
 <li>server块：配置虚拟主机的相关参数，一个http中可以有多个server</li>
 <li>location块：配置请求的路由，以及各种页面的处理情况</li>
 </ul>
-<h4 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h4><p><a href="https://www.runoob.com/w3cnote/nginx-install-and-config.html" target="_blank" rel="noopener">https://www.runoob.com/w3cnote/nginx-install-and-config.html</a></p>
+<h4 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h4><p><span class="exturl" data-url="aHR0cHM6Ly93d3cucnVub29iLmNvbS93M2Nub3RlL25naW54LWluc3RhbGwtYW5kLWNvbmZpZy5odG1s" title="https://www.runoob.com/w3cnote/nginx-install-and-config.html">https://www.runoob.com/w3cnote/nginx-install-and-config.html<i class="fa fa-external-link"></i></span></p>
 ]]></content>
       <tags>
         <tag>nginx</tag>
@@ -605,13 +725,13 @@
 <ul>
 <li>创建了一个Web应用程序，名称app</li>
 <li>app使得所有机器均可访问该机器的8080端口</li>
-<li>HTTP协议使用URL来定位资源，路径/hello，类似于我们通过浏览器要访问<a href="http://www.xxx.com/hello" target="_blank" rel="noopener">www.xxx.com/hello</a></li>
+<li>HTTP协议使用URL来定位资源，路径/hello，类似于我们通过浏览器要访问<span class="exturl" data-url="aHR0cDovL3d3dy54eHguY29tL2hlbGxv" title="http://www.xxx.com/hello">www.xxx.com/hello<i class="fa fa-external-link"></i></span></li>
 <li>hello界面返回字符串Hello World！</li>
 </ul>
 <h3 id="WSGI层"><a href="#WSGI层" class="headerlink" title="WSGI层"></a>WSGI层</h3><p>WSGI(Web Server Gateway Interface)</p>
 <p>WSGI只是一种接口，仅适用于python语言，它定义了Web服务器和Web应用之间的接口规范。也就是说只要Web服务器和Web应用都遵守了WSGI协议，那么Web服务器和Web应用就可以随意组合。</p>
 <p>举个例子，WSGI就像是我们打电话时中间的媒介。拨通电话之后，我们只需要说话，不用担心中间语音是如何处理如何传输的，也不需要担心移动的号码如何往联通的转换，国内的号码如何和国外的号码通过之类的问题。这里的WSGI就是帮助处理和传输工作的。</p>
-<h4 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h4><p><a href="https://blog.csdn.net/lihao21/article/details/52304119" target="_blank" rel="noopener">https://blog.csdn.net/lihao21/article/details/52304119</a></p>
+<h4 id="Reference："><a href="#Reference：" class="headerlink" title="Reference："></a>Reference：</h4><p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xpaGFvMjEvYXJ0aWNsZS9kZXRhaWxzLzUyMzA0MTE5" title="https://blog.csdn.net/lihao21/article/details/52304119">https://blog.csdn.net/lihao21/article/details/52304119<i class="fa fa-external-link"></i></span></p>
 ]]></content>
       <tags>
         <tag>Flask</tag>
@@ -642,7 +762,7 @@
 
 
 
-<h4 id="reference："><a href="#reference：" class="headerlink" title="reference："></a>reference：</h4><p><a href="https://medium.com/datadriveninvestor/deploy-your-pytorch-model-to-production-f69460192217" target="_blank" rel="noopener">https://medium.com/datadriveninvestor/deploy-your-pytorch-model-to-production-f69460192217</a></p>
+<h4 id="reference："><a href="#reference：" class="headerlink" title="reference："></a>reference：</h4><p><span class="exturl" data-url="aHR0cHM6Ly9tZWRpdW0uY29tL2RhdGFkcml2ZW5pbnZlc3Rvci9kZXBsb3kteW91ci1weXRvcmNoLW1vZGVsLXRvLXByb2R1Y3Rpb24tZjY5NDYwMTkyMjE3" title="https://medium.com/datadriveninvestor/deploy-your-pytorch-model-to-production-f69460192217">https://medium.com/datadriveninvestor/deploy-your-pytorch-model-to-production-f69460192217<i class="fa fa-external-link"></i></span></p>
 ]]></content>
   </entry>
   <entry>
@@ -658,7 +778,7 @@
   <entry>
     <title>透过跳板机访问服务器的jupyter notebook</title>
     <url>/2020/02/12/%E9%80%8F%E8%BF%87%E8%B7%B3%E6%9D%BF%E6%9C%BA%E8%AE%BF%E9%97%AE%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84jupyter-notebook/</url>
-    <content><![CDATA[<h3 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h3><p><a href="http://whatbeg.com/2018/12/05/jupyternotebook-1.html" target="_blank" rel="noopener">http://whatbeg.com/2018/12/05/jupyternotebook-1.html</a></p>
+    <content><![CDATA[<h3 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h3><p><span class="exturl" data-url="aHR0cDovL3doYXRiZWcuY29tLzIwMTgvMTIvMDUvanVweXRlcm5vdGVib29rLTEuaHRtbA==" title="http://whatbeg.com/2018/12/05/jupyternotebook-1.html">http://whatbeg.com/2018/12/05/jupyternotebook-1.html<i class="fa fa-external-link"></i></span></p>
 ]]></content>
       <tags>
         <tag>ssh</tag>
@@ -749,19 +869,19 @@
   <entry>
     <title>Hello World</title>
     <url>/2019/12/03/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+    <content><![CDATA[<p>Welcome to <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvLw==" title="https://hexo.io/">Hexo<i class="fa fa-external-link"></i></span>! This is your very first post. Check <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mv" title="https://hexo.io/docs/">documentation<i class="fa fa-external-link"></i></span> for more info. If you get any problems when using Hexo, you can find the answer in <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvdHJvdWJsZXNob290aW5nLmh0bWw=" title="https://hexo.io/docs/troubleshooting.html">troubleshooting<i class="fa fa-external-link"></i></span> or you can ask me on <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2hleG9qcy9oZXhvL2lzc3Vlcw==" title="https://github.com/hexojs/hexo/issues">GitHub<i class="fa fa-external-link"></i></span>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvd3JpdGluZy5odG1s" title="https://hexo.io/docs/writing.html">Writing<i class="fa fa-external-link"></i></span></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvc2VydmVyLmh0bWw=" title="https://hexo.io/docs/server.html">Server<i class="fa fa-external-link"></i></span></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3MvZ2VuZXJhdGluZy5odG1s" title="https://hexo.io/docs/generating.html">Generating<i class="fa fa-external-link"></i></span></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>More info: <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlvL2RvY3Mvb25lLWNvbW1hbmQtZGVwbG95bWVudC5odG1s" title="https://hexo.io/docs/one-command-deployment.html">Deployment<i class="fa fa-external-link"></i></span></p>
 ]]></content>
   </entry>
   <entry>
@@ -790,7 +910,7 @@
 
 <h3 id="proxycommand"><a href="#proxycommand" class="headerlink" title="proxycommand"></a>proxycommand</h3><p><code>ssh -p port jumpUser@jumpIP nc %h %p</code>  </p>
 <p><code>-p</code> 跳板机的ssh端口<br><code>nc</code> netcat(nc) command<br><code>%h</code> Hostname 即最终目标机IP<br><code>%p</code> Hostname的port，即<code>22</code>  </p>
-<p><a href="https://www.cyberciti.biz/faq/linux-unix-ssh-proxycommand-passing-through-one-host-gateway-server/" target="_blank" rel="noopener">https://www.cyberciti.biz/faq/linux-unix-ssh-proxycommand-passing-through-one-host-gateway-server/</a></p>
+<p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY3liZXJjaXRpLmJpei9mYXEvbGludXgtdW5peC1zc2gtcHJveHljb21tYW5kLXBhc3NpbmctdGhyb3VnaC1vbmUtaG9zdC1nYXRld2F5LXNlcnZlci8=" title="https://www.cyberciti.biz/faq/linux-unix-ssh-proxycommand-passing-through-one-host-gateway-server/">https://www.cyberciti.biz/faq/linux-unix-ssh-proxycommand-passing-through-one-host-gateway-server/<i class="fa fa-external-link"></i></span></p>
 ]]></content>
       <tags>
         <tag>vscode</tag>
